@@ -21,6 +21,8 @@ h1 {
   text-align: center;
   color: #ebdbb2;
   font-size: 90;
+	-webkit-text-shadow: 1px 1px 20px #000;
+	-moz-text-shadow: 1px 1px 20px #000;
 	text-shadow: 1px 1px 20px #000;
 }
 
