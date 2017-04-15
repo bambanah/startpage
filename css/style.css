@@ -98,22 +98,3 @@ a {
   color: #282828;
   background-color: #ebdbb2;
 }
-
-#edit {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	padding: 15px 32px;
-	margin: 4px;
-	cursor: pointer;
-	text-decoration: none;
-	text-align: center;
-	border: none;
-	background-color: rgba(40, 40, 40, 0.5);
-	color: #ebdbb2;
-}
-
-#edit:hover {
-	background-color: #282828;
-	color: #ebdbb2;
-}
