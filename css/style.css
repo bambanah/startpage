@@ -6,6 +6,7 @@ html body {
 
 body {
 	background-image: url("https://source.unsplash.com/random/1920x1080");
+	background-color: #282828;
 	position: absolute;
 	text-align: center;
 }
@@ -20,6 +21,7 @@ h1 {
   text-align: center;
   color: #ebdbb2;
   font-size: 90;
+	text-shadow: 1px 1px 20px #000;
 }
 
 a {
