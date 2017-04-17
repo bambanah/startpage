@@ -21,6 +21,7 @@ h1 {
   text-align: center;
   color: #ebdbb2;
   font-size: 90;
+	margin-top: 0;
 	-webkit-text-shadow: 1px 1px 20px #000;
 	-moz-text-shadow: 1px 1px 20px #000;
 	text-shadow: 1px 1px 20px #000;
@@ -42,7 +43,7 @@ a {
 #wrapper {
 	position: relative;
 	top: 50%;
-  transform: perspective(1px) translateY(-60%);
+  transform: translateY(-50%);
 }
 
 .all {
