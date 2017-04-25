@@ -5,7 +5,7 @@ html body {
 }
 
 body {
-	background-image: url("https://source.unsplash.com/random/1920x1080");
+	/*background-image: url("https://source.unsplash.com/random/1920x1080");*/
 	background-color: #282828;
   background-position: center;
   background-repeat: no-repeat;
@@ -112,4 +112,24 @@ a {
 .linklist li:hover {
   color: #282828;
   background-color: #ebdbb2;
+}
+
+#edit-subtitle {
+	font-family: 'Roboto Mono', monospace;
+	font-size: 12px;
+	position: absolute;
+	bottom: 5px;
+	padding: 3px 0;
+	width: 12em;
+	margin: 0 auto;
+	color: #ebddb2;
+	background-color: rgba(40, 40, 40, 0.4);
+	-webkit-text-shadow: 1px 1px 20px #000;
+	-moz-text-shadow: 1px 1px 20px #000;
+	text-shadow: 1px 1px 20px #000;
+}
+
+#edit-subtitle:hover {
+	color: #ebddb2;
+	background-color: #282828;
 }

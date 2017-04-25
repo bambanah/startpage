@@ -1,8 +1,8 @@
 var canvasDots = function() {
     var canvas = document.querySelector('canvas'),
         ctx = canvas.getContext('2d'),
-        colorDot = '#EBDBB2',
-        color = '#EBDBB2';
+        colorDot = '#FFF',
+        color = '#FFF';
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     canvas.style.display = 'block';
@@ -101,6 +101,11 @@ var canvasDots = function() {
     setInterval(createDots, 1000/30);
 };
 
+function changeBackground() {
+  document.body.style.backgroundImage = "url('https://source.unsplash.com/random/1920x1080')";
+}
+
 window.onload = function() {
     canvasDots();
+    changeBackground();
 };
