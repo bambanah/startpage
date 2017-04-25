@@ -5,7 +5,7 @@ html body {
 }
 
 body {
-	/*background-image: url("https://source.unsplash.com/random/1920x1080");*/
+	background-image: url("https://source.unsplash.com/random/1920x1080");
 	background-color: #282828;
   background-position: center;
   background-repeat: no-repeat;
