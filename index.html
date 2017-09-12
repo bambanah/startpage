@@ -9,7 +9,6 @@
     <script src="js/dots.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-      var link_string = "";
 
       function setCookie(cname, cvalue) {
         var expires = "";
@@ -17,7 +16,6 @@
         date.setTime(date.getTime() + (900*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
         document.cookie = cname + "=" + cvalue + expires + "; path=/";
-        //link_string = cname + "=" + cvalue + expires + "; path=/";
       }
 
       function getCookie(cname) {
@@ -60,7 +58,6 @@
         listCookie = listCookie.substring(0, listCookie.length-3);
 
         setCookie("link_string", listCookie);
-        link_string = listCookie;
       }
 
 
@@ -79,8 +76,7 @@
         for (var i = 0; i < all_split.length; i++) {
           tempAll = document.createElement("div");
           tempAll.setAttribute("class", "all");
-
-          console.log(all_split[i]);
+          
           title_split = all_split[i].split("\\t ");
           var tempTitle = document.createElement("h3");
 
