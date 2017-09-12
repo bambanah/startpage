@@ -13,9 +13,9 @@
         var expires = "";
         var date = new Date();
         date.setTime(date.getTime() + (900*24*60*60*1000));
-        expires = "; expires =" + date.toUTCString();
-
+        expires = "; expires=" + date.toUTCString();
         document.cookie = cname + "=" + cvalue + expires + "; path=/";
+        console.log(document.cookie);
       }
 
       function getCookie(cname) {
@@ -34,8 +34,36 @@
   			return "";
       }
 
+      function saveLinks() {
+        var lists = document.getElementsByClassName("all");
+        var listCookie = "";
+
+        var tempChild = lists[0].childNodes;
+        var tempLi = tempChild[3].children;
+        for (var i = 0; i < lists.length; i++) {
+          var tempLi = lists[i].children;
+          var tempTitle = tempLi[0].innerHTML;
+          listCookie += tempTitle + "\\t";
+
+          for (var j = 0; j < tempLi[1].children.length; j++) {
+
+            var tempText = tempLi[1].children[j].children[0].innerHTML;
+            var tempLink = tempLi[1].children[j].children[0].href;
+
+            listCookie += tempText + " " + tempLink + " ";
+          }
+          listCookie += "\\n";
+
+        }
+        // console.log(listCookie);
+        setCookie("link_string", listCookie);
+
+      }
+
+
+
       function rebuildLinks() {
-  			var list = document.getElementById("ql-list");
+  			var list = document.getElementsByClassName("ql-list");
   			list.innerHTML = "";
   			var li = document.createElement("li");
   			var a = document.createElement("a");
@@ -47,23 +75,28 @@
 
   			li.appendChild(a);
 
-  			var ql_split = quick_link_string.split("\n");
+        var link_split = getCookie("link_string").split("\n");
+        console.log(link_split);
 
   			var tempLi, tempA;
-  			for (var i = 0; i < ql_split.length; i += 2) {
+  			for (var i = 0; i < link_split.length; i += 2) {
+          tempTitle = document.createElement("h3");
   				tempLi = document.createElement("li");
   				tempA = document.createElement("a");
 
-  				tempA.appendChild(document.createTextNode(ql_split[i]));
-  				tempA.setAttribute("class", "ql");
-  				tempA.setAttribute("href", ql_split[i + 1]);
-  				tempA.setAttribute("target", "_blank");
 
-  				tempLi.appendChild(tempA);
-  				list.appendChild(tempLi);
+          //tempTitle.setAttribute("class", "title " + );
+
+  				// tempA.appendChild(document.createTextNode(ql_split[i]));
+  				// tempA.setAttribute("class", "ql");
+  				// tempA.setAttribute("href", ql_split[i + 1]);
+  				// tempA.setAttribute("target", "_blank");
+          //
+  				// tempLi.appendChild(tempA);
+  				// list.appendChild(tempLi);
   			}
 
-  			list.appendChild(li);
+  			// list.appendChild(li);
   		}
     </script>
   </head>
@@ -76,44 +109,46 @@
 
         <h1>Hello</h1>
 
-        <div class="all">
-          <div class="title social"><h3>social</h3></div>
-          <ul class = "linklist">
-            <a href="https://www.youtube.com/feed/subscriptions"><li>youtube</li></a>
-            <a href="https://www.facebook.com/"><li>facebook</li></a>
-            <a href="https://www.facebook.com/groups/1270861586364813/photos/"><li>roster</li></a>
-          </ul>
-        </div>
+        <ul class="ql-list">
+          <div class="all">
+            <h3 class="title social">social</h3>
+            <ul class="linklist">
+              <li><a href="https://www.youtube.com/feed/subscriptions">youtube</a></li>
+              <li><a href="https://www.facebook.com/">facebook</a></li>
+              <li><a href="https://www.facebook.com/groups/1270861586364813/photos/">roster</a></li>
+            </ul>
+          </div>
 
-        <div class="all">
-          <div class="title reddit"><h3>reddit</h3></div>
-          <ul class = "linklist">
-            <a href="https://www.reddit.com/"><li>front</li></a>
-            <a href="https://www.reddit.com/r/all"><li>all</li></a>
-            <a href="https://www.reddit.com/r/endlessfrontier"><li>/r/endlessfrontier</li></a>
-            <a href="https://www.reddit.com/r/formula1"><li>/r/formula1</li></a>
-          </ul>
-        </div>
+          <div class="all">
+            <h3 class="title reddit">reddit</h3>
+            <ul class = "linklist">
+              <li><a class = "ql" href="https://www.reddit.com/">front</a></li>
+              <li><a href="https://www.reddit.com/r/all">all</a></li>
+              <li><a href="https://www.reddit.com/r/endlessfrontier">/r/endlessfrontier</a></li>
+              <li><a href="https://www.reddit.com/r/formula1">/r/formula1</a></li>
+            </ul>
+          </div>
 
-        <div class="all">
-          <div class="title uni"><h3>university</h3></div>
-          <ul class = "linklist">
-            <a href="https://blackboard.qut.edu.au/webapps/portal/frameset.jsp?tab_tab_group_id=_4_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2FcourseMain%3Fcourse_id%3D_134491_1"><li>cab303</li></a>
-            <a href="https://blackboard.qut.edu.au/webapps/portal/frameset.jsp?tab_tab_group_id=_4_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2FcourseMain%3Fcourse_id%3D_134497_1"><li>cab403</li></a>
-            <a href="https://blackboard.qut.edu.au/webapps/portal/frameset.jsp?tab_tab_group_id=_4_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2FcourseMain%3Fcourse_id%3D_135147_1"><li>ifb299</li></a>
-            <a href="https://qutvirtual3.qut.edu.au/qv/stu_class_reg_graphical_p.show"><li>timetable</li></a>
-	  </ul>
-        </div>
+          <div class="all">
+            <h3 class="title uni">university</h3>
+            <ul class = "linklist">
+              <li><a href="https://blackboard.qut.edu.au/webapps/portal/frameset.jsp?tab_tab_group_id=_4_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2FcourseMain%3Fcourse_id%3D_134491_1">cab303</a></li>
+              <li><a href="https://blackboard.qut.edu.au/webapps/portal/frameset.jsp?tab_tab_group_id=_4_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2FcourseMain%3Fcourse_id%3D_134497_1">cab403</a></li>
+              <li><a href="https://blackboard.qut.edu.au/webapps/portal/frameset.jsp?tab_tab_group_id=_4_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2FcourseMain%3Fcourse_id%3D_135147_1">ifb299</a></li>
+              <li><a href="https://qutvirtual3.qut.edu.au/qv/stu_class_reg_graphical_p.show">timetable</a></li>
+  	         </ul>
+          </div>
 
-        <div class="all">
-          <div class="title other"><h3>other</h3></div>
-          <ul class = "linklist">
-            <a href="https://www.netflix.com/"><li>netflix</li></a>
-            <a href="https://internetbanking.suncorpbank.com.au/"><li>suncorp</li></a>
-            <a href="https://secpayroll.dominos.com.au/frmWelcome.aspx"><li>payroll</li></a>
-            <a href="https://bambanah.github.io/workout/"><li>nSuns</li></a>
-          </ul>
-        </div>
+          <div class="all">
+            <h3 class="title other">other</h3>
+            <ul class = "linklist">
+              <li><a href="https://www.netflix.com/">netflix</a></li>
+              <li><a href="https://internetbanking.suncorpbank.com.au/">suncorp</a></li>
+              <li><a href="https://secpayroll.dominos.com.au/frmWelcome.aspx">payroll</a></li>
+              <li><a href="https://bambanah.github.io/workout/">nSuns</a></li>
+            </ul>
+          </div>
+        </ul>
 
       </div>
 
@@ -123,8 +158,28 @@
 
     <script>
       var link_string = getCookie("link_string");
+      var text_primary = getCookie("text_primary");
+      var bg_primary = getCookie("bg_primary");
+      var text_secondary = getCookie("text_secondary");
+      var bg_secondary = getCookie("bg_secondary");
+      var bg_image = getCookie("bg_image");
+      var heading_text = getCookie("heading_text");
+      var heading_font = getCookie("heading_font");
+      var title_font = getCookie("title_font");
+      var link_font = getCookie("link_font");
 
-      if (link_string = "") link_string = "social\tyoutube https://www.youtube.com/feed/subscriptions facebook https://www.facebook.com\nreddit\tfront https://www.reddit.com all https://www.reddit.com/r/all"
+
+
+      if (link_string === "") {
+        saveLinks();
+      } else {
+        rebuildLinks();
+      }
+
+      function resetValues() {
+
+      }
+
     </script>
   </body>
 </html>

@@ -60,7 +60,6 @@ a {
 
 .title {
   text-align: center;
-  width: 12em;
 	-webkit-box-shadow: 1px 1px 20px 0px #000;
 	-moz-box-shadow: 1px 1px 20px 0px #000;
 	box-shadow: 1px 1px 20px 0px #000;
@@ -86,6 +85,11 @@ a {
   background-color: #98971a;
 }
 
+.ql-list {
+	margin: 0;
+	padding-left: 0;
+}
+
 .linklist {
   text-align: center;
   list-style: none;
@@ -98,16 +102,19 @@ a {
 	margin-bottom: 0;
 }
 
-.linklist li {
-  color: #ebdbb2;
-  font-family: 'Roboto Mono', monospace;
+.linklist a {
+	display: block;
+	color: #ebdbb2;
+	padding: 7px 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'Roboto Mono', monospace;
   font-weight: bold;
 	display: block;
-  padding: 7px 0;
-	margin-top: 0;
+	margin-top: 0;s
 }
 
-.linklist li:hover {
+.linklist a:hover {
   color: #282828;
   background-color: #ebdbb2;
 }
