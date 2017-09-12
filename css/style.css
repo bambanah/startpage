@@ -119,22 +119,27 @@ a {
   background-color: #ebdbb2;
 }
 
-#edit-subtitle {
+.footer {
 	font-family: 'Roboto Mono', monospace;
 	font-size: 12px;
 	position: fixed;
 	bottom: 5px;
-	padding: 3px 0;
-	width: 12em;
 	margin: 0 auto;
+}
+
+.footer a {
+	text-decoration: none;
 	color: #ebddb2;
+	float: left;
+	margin: 0 5px;
+	padding: 0 3px;
 	background-color: rgba(40, 40, 40, 0.4);
 	-webkit-text-shadow: 1px 1px 20px #000;
 	-moz-text-shadow: 1px 1px 20px #000;
 	text-shadow: 1px 1px 20px #000;
 }
 
-#edit-subtitle:hover {
+.footer a:hover {
 	color: #ebddb2;
 	background-color: #282828;
 }
