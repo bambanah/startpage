@@ -25,16 +25,14 @@ function getCookie(cname) {
 function saveLinks() {
   var lists = document.getElementsByClassName("all");
   var listCookie = "";
+  var tempChild = lists[0].children;
 
-  var tempChild = lists[0].childNodes;
-  var tempLi = tempChild[3].children;
   for (var i = 0; i < lists.length; i++) {
     var tempLi = lists[i].children;
     var tempTitle = tempLi[0].innerHTML;
     listCookie += tempTitle + "\\t";
 
     for (var j = 0; j < tempLi[1].children.length; j++) {
-
       var tempText = tempLi[1].children[j].children[0].innerHTML;
       var tempLink = tempLi[1].children[j].children[0].href;
 
@@ -83,9 +81,14 @@ function rebuildLinks() {
       tempA = document.createElement("a");
       tempLi = document.createElement("li");
 
+
       tempA.appendChild(document.createTextNode(link_split[j]));
       tempA.setAttribute("href", link_split[j + 1]);
 
+
+
+      tempLi.setAttribute("class", "link");
+      tempA.setAttribute("class", "ql");
       tempLi.appendChild(tempA);
       tempList.appendChild(tempLi);
     }
