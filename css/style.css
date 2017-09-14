@@ -49,6 +49,7 @@ a {
 #wrapper {
 	position: absolute;
 	flex: auto;
+	transition: 2s height ease;
 }
 
 .all {
@@ -100,18 +101,69 @@ a {
 	box-shadow: 0px 0px 20px 0px #000;
 	background-color: rgba(40, 40, 40, 0.9);
 	margin-bottom: 0;
+	font-family: 'Roboto Mono', monospace;
+}
+
+.link {
+	display: flex;
+	width: 12em;
+}
+
+.ql {
+	color: #ebdbb2;
+	display: block;
+	overflow-x: hidden;
+  font-weight: bold;
+	display: block;
+	flex: 5;
+}
+
+.ql-text {
+	color: #ebdbb2;
+	background-color: rgba(40, 40, 40, 0);
+	display: block;
+	overflow-x: hidden;
+	display: block;
+	flex: 5;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: 'Roboto Mono', monospace;
+	border: none;
+	height: 35px;
+	resize: none;
+	line-height: 32px;
+	text-align: center;
+	padding: 0;
+	padding-top: 2px;
+}
+
+.edit-button {
+	color: #ebdbb2;
+	flex: 1;
+}
+
+.delete-button {
+	color: #F00;
+	flex: 1;
+}
+
+.edit-btn {
+	color: #ebdbb2;
+	flex: 1;
+}
+
+.link i {
+	margin-top: 2px;
+}
+
+.create-link {
+	display: block;
+
+	color: #ebdbb2;
 }
 
 .linklist a {
-	display: block;
-	color: #ebdbb2;
 	padding: 7px 0;
-	width: 100%;
-	height: 100%;
-	font-family: 'Roboto Mono', monospace;
-  font-weight: bold;
-	display: block;
-	margin-top: 0;s
 }
 
 .linklist a:hover {
@@ -119,22 +171,45 @@ a {
   background-color: #ebdbb2;
 }
 
-#edit-subtitle {
+.confirmation {
+	position: absolute;
+	width: calc(12em - 5px);
+	height: 21px;
+	background-color: white;
+	padding: 7px 0;
+	display: flex;
+	align-items: center;
+	padding-left: 5px;
+	font-weight: bold;
+}
+
+.confirmation a {
+	flex: 1;
+}
+
+.footer {
 	font-family: 'Roboto Mono', monospace;
 	font-size: 12px;
 	position: fixed;
 	bottom: 5px;
-	padding: 3px 0;
-	width: 12em;
 	margin: 0 auto;
+}
+
+.footer a {
+	text-decoration: none;
 	color: #ebddb2;
+	float: left;
+	margin: 0 5px;
+	padding: 0 3px;
 	background-color: rgba(40, 40, 40, 0.4);
 	-webkit-text-shadow: 1px 1px 20px #000;
 	-moz-text-shadow: 1px 1px 20px #000;
 	text-shadow: 1px 1px 20px #000;
 }
 
-#edit-subtitle:hover {
+.footer a:hover {
 	color: #ebddb2;
 	background-color: #282828;
 }
+
+.active
