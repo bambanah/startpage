@@ -27,10 +27,14 @@ function editHandler() {
     } else {
       $(".edit").html("edit");
 
-      $(".create-li").slideUp("normal", function() { $(this).remove(); });
+
       $(".edit-button").remove();
       $(".delete-button").remove();
-      saveLinks();
+      $(".create-li").slideUp("normal", function() {
+        $(this).remove();
+        saveLinks();
+      });
+
     }
   });
 
@@ -196,14 +200,6 @@ function editHandler() {
   });
 }
 
-function createNewLinkHandler() {
-
-
-}
-
 $(document).ready(function() {
   editHandler();
-  createNewLinkHandler();
-
-
 });
