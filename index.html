@@ -2,13 +2,12 @@
   <head>
     <title>Home</title>
 	  <link rel='icon' href='favicon.ico' />
-    <link rel="stylesheet" media='screen and (min-width: 901px)' href="css/style.css" />
-    <link rel="stylesheet" media='screen and (max-width: 900px)' href="css/narrow.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css"  />
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Pacifico" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/links.js"></script>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/links.js" type="text/javascript"></script>
     <script src="js/dots.js" type="text/javascript"></script>
   </head>
 
@@ -66,36 +65,13 @@
       <div class="footer">
         <ul class="footer-list">
           <a class="github" href="https://github.com/bambanah/startpage">github</a>
-          <a class="edit" href="javascript:void(0);">edit</a>
+          <a class="edit" href="#">edit</a>
         </ul>
       </div>
 
 
     </div>
     <script src="js/edit.js"></script>
-    <script>
-      var link_string = getCookie("link_string");
-      var text_primary = getCookie("text_primary");
-      var bg_primary = getCookie("bg_primary");
-      var text_secondary = getCookie("text_secondary");
-      var bg_secondary = getCookie("bg_secondary");
-      var bg_image = getCookie("bg_image");
-      var heading_text = getCookie("heading_text");
-      var heading_font = getCookie("heading_font");
-      var title_font = getCookie("title_font");
-      var link_font = getCookie("link_font");
-
-      if (link_string === "") {
-        saveLinks();
-      } else {
-        rebuildLinks();
-      }
-
-      function resetValues() {
-
-      }
-
-    </script>
 
   </body>
 </html>

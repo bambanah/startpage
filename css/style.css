@@ -1,7 +1,8 @@
-html body {
+html, body {
 	margin: 0;
 	height: 100%;
 	width: 100%;
+	font-size: 16px;
 }
 
 body {
@@ -187,6 +188,10 @@ a {
 	flex: 1;
 }
 
+.footer-list {
+	padding: 0;
+}
+
 .footer {
 	font-family: 'Roboto Mono', monospace;
 	font-size: 12px;
@@ -211,5 +216,3 @@ a {
 	color: #ebddb2;
 	background-color: #282828;
 }
-
-.active
