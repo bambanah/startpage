@@ -9,7 +9,7 @@ function editHandler() {
         tempLi = document.createElement("li");
         tempA = document.createElement("a");
         $(tempLi).addClass("create-li").hide();
-        $(tempA).html("<i class=\"fa fa-plus\" aria-hidden=\"true\"></i>").appendTo(tempLi).addClass("create-link").attr("href", "javascript:void(0);");
+        $(tempA).html("<i class=\"fa fa-plus\" aria-hidden=\"true\"></i>").appendTo(tempLi).addClass("create-link").attr("href", "#");
         $(this).append(tempLi);
         $(this).children(".create-li").slideDown();
 
@@ -17,11 +17,11 @@ function editHandler() {
 
       $(".link").each(function() {
         editButton = document.createElement("a");
-        $(editButton).html("<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>").addClass("edit-button").attr("href", "javascript:void(0);");
+        $(editButton).html("<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>").addClass("edit-button").attr("href", "#");
         $(this).prepend(editButton);
 
         deleteButton = document.createElement("a");
-        $(deleteButton).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").addClass("delete-button").attr("href", "javascript:void(0);");
+        $(deleteButton).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").addClass("delete-button").attr("href", "#");
         $(this).append(deleteButton);
       });
     } else {
@@ -42,8 +42,8 @@ function editHandler() {
     var confirmationDiv = document.createElement("div");
     var tempYes = document.createElement("a");
     var tempNo = document.createElement("a");
-    $(tempYes).html("<i class=\"fa fa-check\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("confirm-yes");
-    $(tempNo).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("confirm-no");
+    $(tempYes).html("<i class=\"fa fa-check\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("confirm-yes");
+    $(tempNo).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("confirm-no");
 
     $(confirmationDiv).html("Are you sure?").append(tempYes).append(tempNo).addClass("confirmation");
     $(this).parent().append(confirmationDiv);
@@ -62,8 +62,8 @@ function editHandler() {
     tempBackBtn = document.createElement("a");
     tempFinishBtn = document.createElement("a");
 
-    $(tempCancelBtn).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("cancel-btn edit-btn");
-    $(tempNextBtn).html("<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("next-btn edit-btn");
+    $(tempCancelBtn).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("cancel-btn edit-btn");
+    $(tempNextBtn).html("<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("next-btn edit-btn");
 
     $(this).parent().prepend(tempCancelBtn);
 
@@ -83,11 +83,11 @@ function editHandler() {
   $(".linklist").on("click", ".cancel-btn", function() {
     if(!$(this).parent().hasClass("create-li")) {
       editButton = document.createElement("a");
-      $(editButton).html("<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>").addClass("edit-button").attr("href", "javascript:void(0);");
+      $(editButton).html("<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>").addClass("edit-button").attr("href", "#");
       $(this).parent().prepend(editButton);
 
       deleteButton = document.createElement("a");
-      $(deleteButton).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").addClass("delete-button").attr("href", "javascript:void(0);");
+      $(deleteButton).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").addClass("delete-button").attr("href", "#");
       $(this).parent().append(deleteButton);
     }
 
@@ -100,8 +100,8 @@ function editHandler() {
     tempCancelBtn = document.createElement("a");
     tempNextBtn = document.createElement("a");
 
-    $(tempCancelBtn).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("cancel-btn edit-btn");
-    $(tempNextBtn).html("<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("next-btn edit-btn");
+    $(tempCancelBtn).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("cancel-btn edit-btn");
+    $(tempNextBtn).html("<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("next-btn edit-btn");
 
     $(this).siblings(".url").hide();
     $(this).siblings(".name").show().select();
@@ -114,8 +114,8 @@ function editHandler() {
     tempBackBtn = document.createElement("a");
     tempFinishBtn = document.createElement("a");
 
-    $(tempBackBtn).html("<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("back-btn edit-btn");
-    $(tempFinishBtn).html("<i class=\"fa fa-check\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("finish-btn edit-btn");
+    $(tempBackBtn).html("<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("back-btn edit-btn");
+    $(tempFinishBtn).html("<i class=\"fa fa-check\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("finish-btn edit-btn");
 
     if ($(this).siblings(".ql").hasClass("create-link")) {
       $(this).siblings(".ql").attr("href", "");
@@ -141,11 +141,11 @@ function editHandler() {
   });
   $(".linklist").on("click", ".finish-btn", function() {
     editButton = document.createElement("a");
-    $(editButton).html("<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>").addClass("edit-button").attr("href", "javascript:void(0);");
+    $(editButton).html("<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>").addClass("edit-button").attr("href", "#");
     $(this).parent().prepend(editButton);
 
     deleteButton = document.createElement("a");
-    $(deleteButton).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").addClass("delete-button").attr("href", "javascript:void(0);");
+    $(deleteButton).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").addClass("delete-button").attr("href", "#");
     $(this).parent().append(deleteButton);
 
     if ($(this).siblings(".ql").hasClass("create-link")) {
@@ -161,7 +161,7 @@ function editHandler() {
       tempLi = document.createElement("li");
       tempA = document.createElement("a");
       $(tempLi).addClass("create-li").hide();
-      $(tempA).html("<i class=\"fa fa-plus\" aria-hidden=\"true\"></i>").appendTo(tempLi).addClass("create-link").attr("href", "javascript:void(0);");
+      $(tempA).html("<i class=\"fa fa-plus\" aria-hidden=\"true\"></i>").appendTo(tempLi).addClass("create-link").attr("href", "#");
 
       $(this).closest(".linklist").append(tempLi);
       $(this).closest(".linklist").children(".create-li").slideDown();
@@ -184,8 +184,8 @@ function editHandler() {
 
     $(this).parent().addClass("link");
     $(this).addClass("ql");
-    $(tempCancelBtn).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("cancel-btn edit-btn");
-    $(tempNextBtn).html("<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>").attr("href", "javascript:void(0);").addClass("next-btn edit-btn");
+    $(tempCancelBtn).html("<i class=\"fa fa-times\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("cancel-btn edit-btn");
+    $(tempNextBtn).html("<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>").attr("href", "#").addClass("next-btn edit-btn");
 
     $(this).parent().prepend(tempCancelBtn);
     $(this).hide();
@@ -201,5 +201,24 @@ function editHandler() {
 }
 
 $(document).ready(function() {
+
+
+  var link_string = getCookie("link_string");
+  var text_primary = getCookie("text_primary");
+  var bg_primary = getCookie("bg_primary");
+  var text_secondary = getCookie("text_secondary");
+  var bg_secondary = getCookie("bg_secondary");
+  var bg_image = getCookie("bg_image");
+  var heading_text = getCookie("heading_text");
+  var heading_font = getCookie("heading_font");
+  var title_font = getCookie("title_font");
+  var link_font = getCookie("link_font");
+
+  if (link_string === "") {
+    saveLinks();
+  } else {
+    rebuildLinks();
+  }
+
   editHandler();
 });

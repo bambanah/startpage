@@ -53,7 +53,7 @@ function rebuildLinks() {
   list.innerHTML = "";
 
   var all_split = getCookie("link_string").split("\\n");
-  //var all_split = link_string.split("\\n");
+  console.log(all_split);
 
   var link_split = "";
   var title_split = "";
@@ -96,4 +96,8 @@ function rebuildLinks() {
     tempAll.appendChild(tempList);
     list.appendChild(tempAll)
   }
+}
+
+function resetValues() {
+  setCookie("link_string", " ");
 }

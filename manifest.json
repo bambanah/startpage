@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Bambanah Startpage",
+  "description": "Replaces New Tab Page with Custom Startpage",
+  "version": "0.0.0.3",
+  "content_security_policy": "default-src 'self'; font-src http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' 'unsafe-inline' https://*.unsplash.com",
+
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
+
+  "browser_action": {
+	   "default_icon": "favicon.ico"
+  }
+}
