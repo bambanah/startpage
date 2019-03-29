@@ -7,22 +7,29 @@ Date.daysBetween = function( date1, date2 ) {   //Get 1 day in milliseconds
  }
 
 $(document).ready(function(){
-  var depart = new Date();
-  depart.setDate(15);
-  depart.setMonth(3);
+  var origin = new Date(2018, 0, 1);
 
-  var now = new Date();
+  var first_day = new Date();
+  first_day.setDate(1);
 
-  var arrive = new Date();
-  arrive.setDate(26);
-  arrive.setMonth(4);
+  var current_day = new Date();
 
-  var fullLength = Date.daysBetween(depart, arrive);
-  var progress = Date.daysBetween(depart, now);
+  var last_day = new Date(current_day.getFullYear(), current_day.getMonth()+1, 0);
+  last_day.setMonth(current_day.getMonth());
 
-  var width = ((progress/fullLength) * 100).toString() + "%";
-  console.log(width);
+  var months_since = current_day.getMonth() - origin.getMonth();
+  months_since += 1 + (12 * (current_day.getFullYear() - origin.getFullYear()));
+
+  var full_length = Date.daysBetween(first_day, last_day);
+  var progress = Date.daysBetween(first_day, current_day);
+
+  var width = Math.floor((progress/full_length) * 100).toString() + "%";
 
   $(".progress").animate({width: width}, 1800);
-  $(".loading-text").text((fullLength-progress) + " sleeps")
+  if (current_day.getDate() == last_day.getDate()) {
+    $(".loading-text").text(months_since + " months!");
+  } else {
+    $(".loading-text").text((full_length-progress+1) + " sleeps");
+  }
+
 });
