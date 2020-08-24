@@ -8,12 +8,9 @@ interface Props {
 }
 
 export default function Link({ title, url }: Props) {
-  console.log(title);
   return (
-    <li>
-      <a className={styles.link} href={url}>
-        {title}
-      </a>
+    <li className={styles.link}>
+      <a href={url}>{title}</a>
     </li>
   );
 }

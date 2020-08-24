@@ -1,12 +1,27 @@
 /* Import fonts */
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "iosevka";
+  src: url("../fonts/iosevka-regular.ttf") format("woff");
+}
+
+@font-face {
+  font-family: "iosevka";
+  src: url("../fonts/iosevka-bold.woff") format("woff");
+  font-weight: bold;
+}
 
 html,
 body {
+  margin: 0;
   background-color: #282a36;
 }
 
-.title {
-  font-family: "IBM Plex Mono", monospace;
-  color: #f8f8f2;
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

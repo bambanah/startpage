@@ -12,9 +12,14 @@ interface Props {
 
 export default function Category({ category_links, category_title }: Props) {
   return (
-    <div className={styles.category_content}>
+    <div className={styles.category_container}>
       <ul className={styles.category_list}>
-        <li className={styles.category_title}>{category_title}</li>
+        <li
+          style={{ color: category_links._color }}
+          className={styles.category_title}
+        >
+          {category_title}
+        </li>
         {Object.keys(category_links.links).map((key) => {
           return (
             <Link

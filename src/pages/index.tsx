@@ -22,7 +22,7 @@ interface Links {
 }
 
 const links: Links = {
-  media: {
+  Media: {
     _color: "#8be9fd",
     links: {
       youtube: {
@@ -32,11 +32,22 @@ const links: Links = {
       netflix: { title: "Netflix", url: "https://netflix.com/browse" },
     },
   },
-  reddit: {
-    _color: "#f1fa8c",
+  Reddit: {
+    _color: "#ff5555",
     links: {
-      front: { title: "Reddit", url: "https://reddit.com" },
+      front: { title: "Front", url: "https://reddit.com" },
+      all: { title: "All", url: "https://reddit.com/r/all" },
       unixporn: { title: "/r/unixporn", url: "https://reddit.com/r/unixporn" },
+      formula1: { title: "/r/formula1", url: "https://reddit.com/r/formula1" },
+    },
+  },
+  Programming: {
+    _color: "#ff79c6",
+    links: {
+      github: { title: "GitHub", url: "https://github.com" },
+      hackerrank: { title: "HackerRank", url: "https://hackerrank.com" },
+      unixporn: { title: "/r/unixporn", url: "https://reddit.com/r/unixporn" },
+      formula1: { title: "/r/formula1", url: "https://reddit.com/r/formula1" },
     },
   },
 };
@@ -44,7 +55,6 @@ const links: Links = {
 const IndexPage = () => {
   return (
     <Layout>
-      <h1 className="title">Hello</h1>
       <div className={styles.link_container}>
         {Object.keys(links).map((category: string) => {
           return (
