@@ -1,27 +1,14 @@
-import React, { ReactNode } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { ReactNode } from "react";
 
-import Header from "./header"
-import "./layout.css"
+import "./layout.css";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
           margin: `0 auto`,
@@ -30,14 +17,9 @@ const Layout = ({ children }: Props) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
