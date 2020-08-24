@@ -11,6 +11,6 @@
   },
   "scripts": {
     "run": "web-ext run",
-    "build": "web-ext build --filename=startpage.zip --overwrite-dest"
+    "build": "web-ext build"
   }
 }
