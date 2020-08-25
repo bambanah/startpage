@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "./Link";
 
-import { CategoryInterface } from "../pages/index";
-
 import * as styles from "../styles/links.module.scss";
 
 interface Link {
