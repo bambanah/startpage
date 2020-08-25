@@ -6,6 +6,7 @@ import Category from "../components/Category";
 import * as styles from "../styles/links.module.scss";
 
 import { graphql } from "gatsby";
+import formatFirebaseData from "../utils/formatFirebaseData";
 
 interface LinkInterface {
   title: string;
@@ -54,19 +55,39 @@ const links: Links = {
   },
 };
 
-const IndexPage = ({ data }: any) => {
+interface Props {
+  data: {
+    allUserCategories: {
+      edges: [];
+    };
+    allUserLinks: {
+      edges: [];
+    };
+  };
+}
+interface Link {
+  category: string;
+  title: string;
+  url: string;
+}
+
+interface Category {
+  title: string;
+  color: string;
+  id: string;
+  links: Link[];
+}
+
+const IndexPage = ({ data }: Props) => {
+  const userCategories = formatFirebaseData(data);
+
+  console.log(userCategories);
+
   return (
     <Layout>
-      {/* <pre style={{ color: "white" }}>{JSON.stringify(data, null, 4)}</pre> */}
       <div className={styles.link_container}>
-        {Object.keys(links).map((category: string) => {
-          return (
-            <Category
-              key={category}
-              category_title={category}
-              category_links={links[category]}
-            ></Category>
-          );
+        {Object.values(userCategories).map((category: Category) => {
+          return <Category key={category.id} category={category}></Category>;
         })}
       </div>
     </Layout>
