@@ -30,7 +30,7 @@ jobs:
           # uuid is only necessary when updating an existing addon,
           # omitting it will create a new addon
           uuid: "{3db1327e-64dc-4ff4-b36e-dc8f575a85da}"
-          xpi: build/startpage.zip
+          xpi: addon/startpage.zip
           manifest: manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
