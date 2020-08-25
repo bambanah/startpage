@@ -5,6 +5,8 @@ import Category from "../components/Category";
 
 import * as styles from "../styles/links.module.scss";
 
+import { graphql } from "gatsby";
+
 interface LinkInterface {
   title: string;
   url: string;
@@ -52,9 +54,10 @@ const links: Links = {
   },
 };
 
-const IndexPage = () => {
+const IndexPage = ({ data }: any) => {
   return (
     <Layout>
+      {/* <pre style={{ color: "white" }}>{JSON.stringify(data, null, 4)}</pre> */}
       <div className={styles.link_container}>
         {Object.keys(links).map((category: string) => {
           return (
@@ -69,5 +72,29 @@ const IndexPage = () => {
     </Layout>
   );
 };
+
+export const query = graphql`
+  {
+    allUserLinks {
+      edges {
+        node {
+          title
+          url
+          category
+          id
+        }
+      }
+    }
+    allUserCategories {
+      edges {
+        node {
+          title
+          color
+          id
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;

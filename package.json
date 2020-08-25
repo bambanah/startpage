@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "gatsby-plugin-scss-typescript": "^4.0.13",
+    "gatsby-source-firebase": "^1.0.0",
     "node-sass": "^4.14.1"
   }
 }

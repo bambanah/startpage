@@ -29,6 +29,30 @@ module.exports = {
     },
     "gatsby-plugin-typescript",
     "gatsby-plugin-scss-typescript",
+    {
+      resolve: `gatsby-source-firebase`,
+      options: {
+        // Path to firebase private key
+        // TODO: MAKE THIS ACTUALLY PRIVATE
+        credential: require("./firebase-key.json"),
+
+        // Firebase database root url
+        databaseURL: "https://startpage-a7089.firebaseio.com/",
+
+        types: [
+          {
+            type: "UserLinks",
+
+            path: "users/lachie/links",
+          },
+          {
+            type: "UserCategories",
+
+            path: "users/lachie/categories",
+          },
+        ],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
