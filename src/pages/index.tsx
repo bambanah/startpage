@@ -8,6 +8,8 @@ import * as styles from "../styles/links.module.scss";
 import { graphql } from "gatsby";
 import formatFirebaseData from "../utils/formatFirebaseData";
 
+import { Category as CategoryInterface } from "../utils/formatFirebaseData";
+
 interface Props {
   data: {
     allUserCategories: {
@@ -18,18 +20,6 @@ interface Props {
     };
   };
 }
-interface Link {
-  category: string;
-  title: string;
-  url: string;
-}
-
-interface Category {
-  title: string;
-  color: string;
-  id: string;
-  links: Link[];
-}
 
 const IndexPage = ({ data }: Props) => {
   const userCategories = formatFirebaseData(data);
@@ -37,7 +27,7 @@ const IndexPage = ({ data }: Props) => {
   return (
     <Layout>
       <div className={styles.link_container}>
-        {Object.values(userCategories).map((category: Category) => {
+        {Object.values(userCategories).map((category: CategoryInterface) => {
           return <Category key={category.id} category={category}></Category>;
         })}
       </div>

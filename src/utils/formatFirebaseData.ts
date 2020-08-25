@@ -7,13 +7,13 @@ interface Data {
   };
 }
 
-interface Link {
+export interface Link {
   category: string;
   title: string;
   url: string;
 }
 
-interface Category {
+export interface Category {
   title: string;
   color: string;
   id: string;
