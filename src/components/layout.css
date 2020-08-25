@@ -1,17 +1,6 @@
 /* Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
 
-@font-face {
-  font-family: "iosevka";
-  src: url("../fonts/iosevka-regular.ttf") format("woff");
-}
-
-@font-face {
-  font-family: "iosevka";
-  src: url("../fonts/iosevka-bold.woff") format("woff");
-  font-weight: bold;
-}
-
 html,
 body {
   margin: 0;
