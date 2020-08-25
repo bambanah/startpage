@@ -3,10 +3,10 @@ import Link from "./Link";
 
 import * as styles from "../styles/links.module.scss";
 
-import { Category } from "../utils/formatFirebaseData";
+import { Category as CategoryType } from "../utils/formatFirebaseData";
 
 interface Props {
-  category: Category;
+  category: CategoryType;
 }
 
 export default function Category({ category }: Props) {
