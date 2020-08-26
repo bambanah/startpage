@@ -2,6 +2,8 @@ import React, { useState, FormEvent } from "react";
 import firebase from "gatsby-plugin-firebase";
 import { navigate, Link } from "gatsby";
 
+import * as styles from "../styles/auth.module.scss";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,31 +42,33 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <label htmlFor="userEmail">Email:</label>
-        <input
-          type="text"
-          name="userEmail"
-          value={email}
-          placeholder="e.g.: example@example.com"
-          id="userEmail"
-          onChange={(e) => onChangeHandler(e)}
-        />
-        <label>
-          Password:
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <form onSubmit={submitHandler} className={styles.form}>
           <input
+            className={styles.input}
+            type="text"
+            name="userEmail"
+            value={email}
+            placeholder="email"
+            id="userEmail"
+            onChange={(e) => onChangeHandler(e)}
+          />
+          <input
+            className={styles.input}
             type="password"
             name="userPassword"
             value={password}
-            placeholder="Password"
+            placeholder="password"
             id="userPassword"
             onChange={(e) => onChangeHandler(e)}
           />
-        </label>
-        <input type="submit" value="Sign In" />
-      </form>
-      <Link to="/signup">Sign Up Here!</Link>
+          <input className={styles.submitButton} type="submit" value="login" />
+        </form>
+        <Link className={styles.link} to="/signup">
+          sign up
+        </Link>
+      </div>
     </div>
   );
 }

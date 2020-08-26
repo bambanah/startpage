@@ -2,6 +2,8 @@ import React, { useState, FormEvent } from "react";
 import firebase from "gatsby-plugin-firebase";
 import { Link, navigate } from "gatsby";
 
+import * as styles from "../styles/auth.module.scss";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,43 +54,47 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="userEmail">Email:</label>
-        <input
-          type="text"
-          name="userEmail"
-          value={email}
-          placeholder="e.g.: example@example.com"
-          id="userEmail"
-          onChange={(e) => onChangeHandler(e)}
-        />
-        <label>
-          Password:
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <input
+            className={styles.input}
+            type="text"
+            name="userEmail"
+            value={email}
+            placeholder="email"
+            id="userEmail"
+            onChange={(e) => onChangeHandler(e)}
+          />
+          <input
+            className={styles.input}
             type="password"
             name="userPassword"
             value={password}
-            placeholder="Password"
+            placeholder="password"
             id="userPassword"
             onChange={(e) => onChangeHandler(e)}
           />
-        </label>
-        <label>
-          Confirm Password:
           <input
+            className={styles.input}
             type="password"
             name="userConfirmPassword"
             value={confirmPassword}
-            placeholder="Confirm Password"
+            placeholder="confirm password"
             id="userConfirmPassword"
             onChange={(e) => onChangeHandler(e)}
           />
-        </label>
-        <input type="submit" value="Sign Up" />
-      </form>
-      <Link to="/login">Go to Login</Link>
-      {error}
+          <input
+            className={styles.submitButton}
+            type="submit"
+            value="sign up"
+          />
+        </form>
+        <Link className={styles.link} to="/login">
+          login
+        </Link>
+        {error}
+      </div>
     </div>
   );
 }
