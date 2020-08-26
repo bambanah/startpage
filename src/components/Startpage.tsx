@@ -9,16 +9,13 @@ import { Data, Category as CategoryType } from "../utils/types";
 export default function Startpage() {
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
-  const currentUser = firebase.auth().currentUser;
-
-  if (currentUser !== null) {
-    console.log("Current User Email: ", currentUser.email);
-  }
 
   useEffect(() => {
+    const userId = firebase.auth().currentUser?.uid;
+
     firebase
       .database()
-      .ref("/users/lachie2")
+      .ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
         setData(snapshot.val());

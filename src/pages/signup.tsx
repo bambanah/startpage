@@ -1,55 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import firebase from "gatsby-plugin-firebase";
+import { Link, navigate } from "gatsby";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const signInWithEmailAndPasswordHandler = (
-    event: any,
-    email: any,
-    password: any
-  ) => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log("event: ", event);
-    firebase.auth().signInWithEmailAndPassword(email, password);
+
+    if (password === confirmPassword) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          console.log(error.code);
+
+          if (errorCode === "auth/email-already-in-use") {
+            alert(
+              "This email address is already in use. Please choose another one."
+            );
+          } else {
+            alert(errorMessage);
+          }
+        });
+    } else {
+      setError("Passwords don't match");
+    }
   };
 
-  const onChangeHandler = (event: any) => {
+  const onChangeHandler = (event: {
+    currentTarget: { name: string; value: string };
+  }) => {
     const { name, value } = event.currentTarget;
 
     if (name === "userEmail") {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
+    } else if (name === "userConfirmPassword") {
+      setConfirmPassword(value);
     }
   };
 
-  // const handleSubmit = () => {
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(state.email, state.password)
-  //     .catch((error) => {
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-
-  //       if (errorCode === "auth/wrong-password") {
-  //         alert("Wrong password");
-  //       } else {
-  //         alert(errorMessage);
-  //       }
-
-  //       console.log(error);
-  //     });
-  // };
-
-  // const initialState = { email: "", password: "" };
-
-  // const [state, setState] = useState(initialState);
-
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="userEmail">Email:</label>
         <input
           type="text"
@@ -70,14 +74,21 @@ export default function Login() {
             onChange={(e) => onChangeHandler(e)}
           />
         </label>
+        <label>
+          Confirm Password:
+          <input
+            type="password"
+            name="userConfirmPassword"
+            value={confirmPassword}
+            placeholder="Confirm Password"
+            id="userConfirmPassword"
+            onChange={(e) => onChangeHandler(e)}
+          />
+        </label>
+        <input type="submit" value="Sign Up" />
       </form>
-      <button
-        onClick={(event) => {
-          signInWithEmailAndPasswordHandler(event, email, password);
-        }}
-      >
-        Sign in
-      </button>
+      <Link to="/login">Go to Login</Link>
+      {error}
     </div>
   );
 }
