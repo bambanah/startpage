@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Personal Startpage`,
+    description: `A startpage that's pretty much only configured to be used by me`,
+    author: `@bambanah`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,37 +24,16 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `favicon.png`, // This path is relative to the root of the site.
+        icon: `favicon.png`,
       },
     },
     "gatsby-plugin-typescript",
     "gatsby-plugin-scss-typescript",
     {
-      resolve: `gatsby-source-firebase`,
+      resolve: "gatsby-plugin-firebase",
       options: {
-        // Path to firebase private key
-        // TODO: MAKE THIS ACTUALLY PRIVATE
-        credential: require("./firebase-key.json"),
-
-        // Firebase database root url
-        databaseURL: "https://startpage-a7089.firebaseio.com/",
-
-        types: [
-          {
-            type: "UserLinks",
-
-            path: "users/lachie/links",
-          },
-          {
-            type: "UserCategories",
-
-            path: "users/lachie/categories",
-          },
-        ],
+        credentials: require("./firebase.json"),
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };

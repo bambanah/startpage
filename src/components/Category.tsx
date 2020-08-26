@@ -3,7 +3,7 @@ import Link from "./Link";
 
 import * as styles from "../styles/links.module.scss";
 
-import { Category as CategoryType } from "../utils/formatFirebaseData";
+import { Category as CategoryType } from "../pages/index";
 
 interface Props {
   category: CategoryType;
@@ -16,7 +16,7 @@ export default function Category({ category }: Props) {
         <li style={{ color: category.color }} className={styles.category_title}>
           {category.title}
         </li>
-        {category.links.map((link) => {
+        {Object.values(category.links).map((link) => {
           return <Link key={link.url} title={link.title} url={link.url}></Link>;
         })}
       </ul>
