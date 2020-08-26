@@ -3,7 +3,7 @@ import Link from "./Link";
 
 import * as styles from "../styles/links.module.scss";
 
-import { Category as CategoryType } from "../pages/index";
+import { Category as CategoryType } from "../utils/types";
 
 interface Props {
   category: CategoryType;
