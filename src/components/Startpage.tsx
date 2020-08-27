@@ -33,8 +33,11 @@ export default function Startpage() {
             );
           })}
       </div>
-      <div className={styles.logoutButton}>
-        <a onClick={signOut}>Logout</a>
+      <div className={styles.bottomButtons}>
+        <a className={styles.editButton}>Edit</a>
+        <a className={styles.logoutButton} onClick={signOut}>
+          Logout
+        </a>
       </div>
     </>
   );
