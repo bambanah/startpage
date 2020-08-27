@@ -1,6 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import firebase from "gatsby-plugin-firebase";
-import { navigate, Link } from "gatsby";
+import { Link } from "gatsby";
 
 import * as styles from "../styles/auth.module.scss";
 
