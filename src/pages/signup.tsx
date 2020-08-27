@@ -4,6 +4,8 @@ import { Link, navigate } from "gatsby";
 
 import * as styles from "../styles/auth.module.scss";
 
+import { createUser } from "../utils/auth";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,26 +16,7 @@ export default function Login() {
     event.preventDefault();
 
     if (password === confirmPassword) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(() => {
-          navigate("/");
-        })
-        .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-
-          console.log(error.code);
-
-          if (errorCode === "auth/email-already-in-use") {
-            alert(
-              "This email address is already in use. Please choose another one."
-            );
-          } else {
-            alert(errorMessage);
-          }
-        });
+      createUser(email, password);
     } else {
       setError("Passwords don't match");
     }
