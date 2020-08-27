@@ -5,14 +5,14 @@ import Category from "../components/Category";
 
 import * as styles from "../styles/links.module.scss";
 import { Data, Category as CategoryType } from "../utils/types";
-import { signOut } from "../utils/auth";
+import { signOut, getCurrentUserId } from "../utils/auth";
 
 export default function Startpage() {
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
 
   useEffect(() => {
-    const userId = firebase.auth().currentUser?.uid;
+    const userId = getCurrentUserId();
 
     firebase
       .database()

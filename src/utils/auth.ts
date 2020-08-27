@@ -1,7 +1,7 @@
 import firebase from "gatsby-plugin-firebase";
 import { navigate } from "gatsby";
 
-import { setupNewUserLinks } from "./links";
+import { assignDefaultLinks } from "./links";
 
 export const isLoggedIn = () => {
   return firebase.auth().currentUser != null;
@@ -11,6 +11,10 @@ export const getCurrentUser = () => {
   return firebase.auth().currentUser;
 };
 
+export const getCurrentUserId = () => {
+  return firebase.auth().currentUser?.uid;
+};
+
 export const createUser = (email: string, password: string) => {
   firebase
     .auth()
@@ -18,7 +22,7 @@ export const createUser = (email: string, password: string) => {
     .then((res) => {
       if (res.user !== undefined && res.user !== null) {
         const userId = res.user.uid;
-        setupNewUserLinks(userId);
+        assignDefaultLinks(userId);
         navigate("/");
       }
     })
