@@ -5,6 +5,7 @@ import Category from "../components/Category";
 
 import * as styles from "../styles/links.module.scss";
 import { Data, Category as CategoryType } from "../utils/types";
+import { signOut } from "../utils/auth";
 
 export default function Startpage() {
   let initialData: Data = { categories: {} };
@@ -23,11 +24,18 @@ export default function Startpage() {
   }, []);
 
   return (
-    <div className={styles.link_container}>
-      {data &&
-        Object.values(data.categories).map((category: CategoryType) => {
-          return <Category key={category.color} category={category}></Category>;
-        })}
-    </div>
+    <>
+      <div className={styles.link_container}>
+        {data &&
+          Object.values(data.categories).map((category: CategoryType) => {
+            return (
+              <Category key={category.color} category={category}></Category>
+            );
+          })}
+      </div>
+      <div className={styles.logoutButton}>
+        <a onClick={signOut}>Logout</a>
+      </div>
+    </>
   );
 }

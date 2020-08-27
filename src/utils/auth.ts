@@ -37,3 +37,8 @@ export const createUser = (email: string, password: string) => {
       }
     });
 };
+
+export const signOut = () => {
+  firebase.auth().signOut();
+  navigate("/login");
+};

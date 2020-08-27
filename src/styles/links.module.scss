@@ -11,14 +11,7 @@
 .category_container {
   width: 160px;
   padding: 1rem 1rem;
-
-  // background-color: #2e3441;
-  // box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.75);
-  // border-radius: 5px;
-
-  &:not(:last-child) {
-    margin-right: 50px;
-  }
+  margin: 0 25px;
 }
 
 .category_list {
@@ -56,6 +49,31 @@
 
     &:hover {
       background-size: 100% 2px;
+    }
+  }
+}
+
+.logoutButton {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+
+  a {
+    box-sizing: border-box;
+    position: relative;
+    left: -50%;
+    cursor: pointer;
+
+    font-family: "Fira Code", monospace;
+    color: #f8f8f2;
+    font-size: 14px;
+    padding: 0.1rem;
+
+    transition-duration: 0.1s;
+
+    &:hover {
+      color: #ff5555;
+      // text-decoration: underline;
     }
   }
 }

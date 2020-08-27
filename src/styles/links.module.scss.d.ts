@@ -8,3 +8,4 @@ export const categoryList: string;
 export const category_title: string;
 export const categoryTitle: string;
 export const link: string;
+export const logoutButton: string;
