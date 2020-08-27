@@ -38,6 +38,25 @@ export const createUser = (email: string, password: string) => {
     });
 };
 
+export const signIn = (email: string, password: string) => {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      navigate("/");
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      if (errorCode === "auth/wrong-password") {
+        alert("Wrong password");
+      } else {
+        alert(errorMessage);
+      }
+    });
+};
+
 export const signOut = () => {
   firebase.auth().signOut();
   navigate("/login");

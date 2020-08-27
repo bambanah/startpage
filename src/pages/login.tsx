@@ -4,6 +4,8 @@ import { navigate, Link } from "gatsby";
 
 import * as styles from "../styles/auth.module.scss";
 
+import { signIn } from "../utils/auth";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,22 +13,7 @@ export default function Login() {
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
 
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-
-        if (errorCode === "auth/wrong-password") {
-          alert("Wrong password");
-        } else {
-          alert(errorMessage);
-        }
-      });
+    signIn(email, password);
   };
 
   const onChangeHandler = (event: {
