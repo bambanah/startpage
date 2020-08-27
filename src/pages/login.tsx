@@ -10,22 +10,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitHandler = (event: FormEvent) => {
-    event.preventDefault();
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
 
     signIn(email, password);
-  };
-
-  const onChangeHandler = (event: {
-    currentTarget: { name: string; value: string };
-  }) => {
-    const { name, value } = event.currentTarget;
-
-    if (name === "userEmail") {
-      setEmail(value);
-    } else if (name === "userPassword") {
-      setPassword(value);
-    }
   };
 
   return (
@@ -39,7 +27,7 @@ export default function Login() {
             value={email}
             placeholder="email"
             id="userEmail"
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => setEmail(e.currentTarget.value)}
           />
           <input
             className={styles.input}
@@ -48,7 +36,7 @@ export default function Login() {
             value={password}
             placeholder="password"
             id="userPassword"
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => setPassword(e.currentTarget.value)}
           />
           <input className={styles.submitButton} type="submit" value="login" />
         </form>

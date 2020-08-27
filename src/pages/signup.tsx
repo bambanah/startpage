@@ -12,27 +12,13 @@ export default function Login() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
     if (password === confirmPassword) {
       createUser(email, password);
     } else {
       setError("Passwords don't match");
-    }
-  };
-
-  const onChangeHandler = (event: {
-    currentTarget: { name: string; value: string };
-  }) => {
-    const { name, value } = event.currentTarget;
-
-    if (name === "userEmail") {
-      setEmail(value);
-    } else if (name === "userPassword") {
-      setPassword(value);
-    } else if (name === "userConfirmPassword") {
-      setConfirmPassword(value);
     }
   };
 
@@ -47,7 +33,7 @@ export default function Login() {
             value={email}
             placeholder="email"
             id="userEmail"
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => setEmail(e.currentTarget.value)}
           />
           <input
             className={styles.input}
@@ -56,7 +42,7 @@ export default function Login() {
             value={password}
             placeholder="password"
             id="userPassword"
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => setPassword(e.currentTarget.value)}
           />
           <input
             className={styles.input}
@@ -65,7 +51,7 @@ export default function Login() {
             value={confirmPassword}
             placeholder="confirm password"
             id="userConfirmPassword"
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => setConfirmPassword(e.currentTarget.value)}
           />
           <input
             className={styles.submitButton}
