@@ -51,6 +51,13 @@
       background-size: 100% 2px;
     }
   }
+
+  &:hover .linkEditButton {
+    display: inline;
+  }
+  .linkEditButton {
+    display: none;
+  }
 }
 
 .bottomButtons {

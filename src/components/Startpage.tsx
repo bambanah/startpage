@@ -4,13 +4,14 @@ import firebase from "gatsby-plugin-firebase";
 import Category from "../components/Category";
 
 import * as styles from "../styles/links.module.scss";
-import { Data, Category as CategoryType } from "../utils/types";
+import { Data } from "../utils/types";
 import { signOut, getCurrentUserId } from "../utils/auth";
+import { updateLinks } from "../utils/links";
 
 export default function Startpage() {
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
-  const [editMode, setEdit] = useState(false);
+  const [globalEditMode, setEdit] = useState(false);
 
   useEffect(() => {
     const userId = getCurrentUserId();
@@ -28,23 +29,31 @@ export default function Startpage() {
     <>
       <div className={styles.link_container}>
         {data &&
-          Object.values(data.categories).map((category: CategoryType) => {
+          Object.entries(data.categories).map(([key, category]) => {
             return (
-              <Category key={category.color} category={category}></Category>
+              <Category
+                key={category.color}
+                id={key}
+                globalEditMode={globalEditMode}
+                categoryData={category}
+              ></Category>
             );
           })}
       </div>
       <div className={styles.bottomButtons}>
-        {!editMode && (
+        {!globalEditMode && (
           <a className={styles.editButton} onClick={() => setEdit(true)}>
             Edit
           </a>
         )}
-        {editMode && (
+        {globalEditMode && (
           <a
             style={{ border: `1px solid #43d4ee` }}
             className={styles.editButton}
-            onClick={() => setEdit(false)}
+            onClick={() => {
+              setEdit(false);
+              // updateLinks(data);
+            }}
           >
             Save
           </a>
