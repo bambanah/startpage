@@ -7,7 +7,9 @@ export interface Category {
   title: string;
   color: string;
   id: string;
-  links: Link[];
+  links: {
+    [id: string]: Link;
+  };
 }
 export interface Data {
   categories: {
