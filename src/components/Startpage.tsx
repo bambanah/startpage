@@ -10,6 +10,7 @@ import { signOut, getCurrentUserId } from "../utils/auth";
 export default function Startpage() {
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
+  const [editMode, setEdit] = useState(false);
 
   useEffect(() => {
     const userId = getCurrentUserId();
@@ -34,7 +35,20 @@ export default function Startpage() {
           })}
       </div>
       <div className={styles.bottomButtons}>
-        <a className={styles.editButton}>Edit</a>
+        {!editMode && (
+          <a className={styles.editButton} onClick={() => setEdit(true)}>
+            Edit
+          </a>
+        )}
+        {editMode && (
+          <a
+            style={{ border: `1px solid #43d4ee` }}
+            className={styles.editButton}
+            onClick={() => setEdit(false)}
+          >
+            Save
+          </a>
+        )}
         <a className={styles.logoutButton} onClick={signOut}>
           Logout
         </a>
