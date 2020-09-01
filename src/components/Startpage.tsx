@@ -52,7 +52,7 @@ export default function Startpage() {
             className={styles.editButton}
             onClick={() => {
               setEdit(false);
-              // updateLinks(data);
+              updateLinks(data);
             }}
           >
             Save

@@ -51,12 +51,29 @@
       background-size: 100% 2px;
     }
   }
+}
 
-  &:hover .linkEditButton {
-    display: inline;
+.linkEdit {
+  &:hover {
+    a {
+      display: none;
+    }
+    .linkEditButton {
+      display: inline-block;
+    }
   }
+
   .linkEditButton {
     display: none;
+    // text-align: center;
+    font-family: "Fira Code", monospace;
+    font-size: 1em;
+
+    color: #000;
+    padding-left: 2px;
+    cursor: pointer;
+    width: 100%;
+    background-color: #f8f8f2;
   }
 }
 

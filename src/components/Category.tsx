@@ -14,16 +14,13 @@ interface Props {
 export default function Category({ globalEditMode, categoryData }: Props) {
   const [category, setCategory] = useState(categoryData);
 
-  const updateTitle = (linkId: string, value: string) => {
+  const updateLink = (
+    linkId: string,
+    newLink: { title: string; url: string }
+  ) => {
     let newCategory = { ...category };
-    newCategory.links[linkId].title = value;
-
-    setCategory(newCategory);
-  };
-
-  const updateUrl = (linkId: string, value: string) => {
-    let newCategory = { ...category };
-    newCategory.links[linkId].url = value;
+    newCategory.links[linkId].title = newLink.title;
+    newCategory.links[linkId].url = newLink.url;
 
     setCategory(newCategory);
   };
@@ -38,12 +35,11 @@ export default function Category({ globalEditMode, categoryData }: Props) {
           return (
             <Link
               key={key}
-              id={key}
-              title={link.title}
-              url={link.url}
+              linkId={key}
+              linkTitle={link.title}
+              linkUrl={link.url}
               globalEditMode={globalEditMode}
-              updateTitle={updateTitle}
-              updateUrl={updateUrl}
+              updateLink={updateLink}
             ></Link>
           );
         })}

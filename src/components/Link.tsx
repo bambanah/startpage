@@ -1,85 +1,72 @@
-import React, { useState } from "react";
-
+import React, { useState, FormEvent } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import * as styles from "../styles/links.module.scss";
-
-interface EditLinkProps {
-  id: string;
-  title: string;
-  url: string;
-  updateTitle: any;
-  updateUrl: any;
-}
-
-const EditLink = ({
-  id,
-  title,
-  url,
-  updateTitle,
-  updateUrl,
-}: EditLinkProps) => {
-  return (
-    <li>
-      <input
-        id={`${id}-title`}
-        value={title}
-        onChange={(e) => updateTitle(id, e.currentTarget.value)}
-      />
-      <input
-        id={`${id}-url`}
-        value={url}
-        onChange={(e) => updateUrl(id, e.currentTarget.value)}
-      />
-    </li>
-  );
-};
+var classNames = require("classnames");
 
 interface LinkProps {
-  id: string;
-  title: string;
-  url: string;
-  updateTitle: any;
-  updateUrl: any;
+  linkId: string;
+  linkTitle: string;
+  linkUrl: string;
+  updateLink: any;
   globalEditMode: Boolean;
 }
 
 export default function Link({
-  id,
-  title,
-  url,
-  updateTitle,
-  updateUrl,
+  linkId,
+  linkTitle,
+  linkUrl,
+  updateLink,
   globalEditMode,
 }: LinkProps) {
-  let [linkEdit, toggleLinkEdit] = useState(false);
-  console.log(linkEdit);
-  // if (!globalEditMode) {
-  //   return (
-  //     <li className={styles.link}>
-  //       <a href={url}>{title}</a>
-  //     </li>
-  //   );
-  // } else {
-  //   return (
-  //     <EditLink
-  //       id={id}
-  //       url={url}
-  //       title={title}
-  //       updateTitle={updateTitle}
-  //       updateUrl={updateUrl}
-  //     ></EditLink>
-  //   );
-  // }
-  return (
-    <li className={styles.link}>
-      <a href={url}>{title}</a>
-      {globalEditMode && (
-        <span
-          className={styles.linkEditButton}
-          onClick={(e) => toggleLinkEdit(!linkEdit)}
-        >
-          E
-        </span>
-      )}
-    </li>
-  );
+  let [linkEditMode, setLinkEditMode] = useState(false);
+  let [title, setTitle] = useState(linkTitle);
+  let [url, setUrl] = useState(linkUrl);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newLink = { title: title, url: url };
+
+    updateLink(linkId, newLink);
+    setLinkEditMode(false);
+  };
+
+  if (linkEditMode) {
+    return (
+      <li>
+        <form onSubmit={handleSubmit}>
+          <input
+            id={`${linkId}-title`}
+            value={title}
+            onChange={(e) => setTitle(e.currentTarget.value)}
+          />
+          <input
+            id={`${linkId}-url`}
+            value={url}
+            onChange={(e) => setUrl(e.currentTarget.value)}
+          />
+          <input type="submit" value="save" />
+        </form>
+      </li>
+    );
+  } else {
+    return (
+      <li
+        className={classNames(styles.link, {
+          [styles.linkEdit]: globalEditMode,
+        })}
+      >
+        <a href={url}>{title}</a>
+        {globalEditMode && (
+          <span
+            className={classNames(styles.linkEditButton)}
+            onClick={() => setLinkEditMode(!linkEditMode)}
+          >
+            <FontAwesomeIcon icon={faPen} /> Edit
+          </span>
+        )}
+      </li>
+    );
+  }
 }
