@@ -21,6 +21,7 @@ export default function Startpage() {
       .ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
+        console.log(snapshot.key);
         setData(snapshot.val());
       });
   }, []);

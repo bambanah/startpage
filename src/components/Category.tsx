@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Link from "./Link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import * as styles from "../styles/links.module.scss";
 
 import { Category as CategoryType } from "../utils/types";
+import AddLink from "./AddLink";
 
 interface Props {
   categoryData: CategoryType;
@@ -21,8 +20,8 @@ export default function Category({ globalEditMode, categoryData }: Props) {
     newLink: { title: string; url: string }
   ) => {
     let newCategory = { ...category };
-    newCategory.links[linkId].title = newLink.title;
-    newCategory.links[linkId].url = newLink.url;
+
+    newCategory.links[linkId] = newLink;
 
     setCategory(newCategory);
   };
@@ -45,13 +44,7 @@ export default function Category({ globalEditMode, categoryData }: Props) {
             ></Link>
           );
         })}
-        {globalEditMode && (
-          <li>
-            <a className={styles.addLinkButton}>
-              <FontAwesomeIcon icon={faPlus} />
-            </a>
-          </li>
-        )}
+        {globalEditMode && <AddLink updateLink={updateLink} />}
       </ul>
     </div>
   );

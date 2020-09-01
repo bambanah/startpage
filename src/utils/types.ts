@@ -1,5 +1,4 @@
 interface Link {
-  category: string;
   title: string;
   url: string;
 }

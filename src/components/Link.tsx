@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import * as styles from "../styles/links.module.scss";
-var classNames = require("classnames");
+import classNames from "classnames";
 
 interface LinkProps {
   linkId: string;
