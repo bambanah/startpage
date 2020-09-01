@@ -56,22 +56,86 @@
     a {
       display: none;
     }
-    .linkEditButton {
-      display: inline-block;
+    .linkEditButtons {
+      display: flex;
     }
   }
 
-  .linkEditButton {
+  .linkEditButtons {
     display: none;
-    // text-align: center;
-    font-family: "Fira Code", monospace;
-    // font-size: 1em;
 
-    color: #000;
-    padding-left: 2px;
-    cursor: pointer;
-    width: 100%;
+    .editButton {
+      flex: 1 1 80%;
+      padding-left: 2px;
+
+      font-family: "Fira Code", monospace;
+
+      cursor: pointer;
+
+      color: #000;
+      background-color: #f8f8f2;
+
+      svg {
+        margin-right: 0.2rem;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .deleteButton {
+      flex: 1 1 2rem;
+      text-align: center;
+
+      cursor: pointer;
+
+      background-color: #ff5555;
+      color: black;
+
+      &:hover {
+        color: #ff5555;
+        background-color: black;
+      }
+    }
+  }
+
+  .deletePrompt {
+    display: flex;
+
+    color: black;
     background-color: #f8f8f2;
+    font-family: "Fira Code", monospace;
+
+    span {
+      text-align: center;
+      &:nth-of-type(2) {
+        flex: 1 1 80%;
+      }
+      &:not(:nth-of-type(2)) {
+        cursor: pointer;
+      }
+    }
+
+    .deleteButtonAccept {
+      flex: 1 0 2rem;
+      background-color: #50fa7b;
+
+      &:hover {
+        color: #50fa7b;
+        background-color: black;
+      }
+    }
+
+    .deleteButtonDecline {
+      flex: 1 0 2rem;
+
+      background-color: #ff5555;
+
+      &:hover {
+        color: #ff5555;
+        background-color: black;
+      }
+    }
   }
 }
 
@@ -79,6 +143,7 @@
   background-color: #44475a;
   color: #f8f8f2;
   padding: 0.2rem 0;
+  box-sizing: border-box;
   font-family: "Fira Code", monospace;
   cursor: pointer;
   width: 100%;

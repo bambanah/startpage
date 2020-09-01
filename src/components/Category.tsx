@@ -26,6 +26,13 @@ export default function Category({ globalEditMode, categoryData }: Props) {
     setCategory(newCategory);
   };
 
+  const deleteLink = (linkId: string) => {
+    let newCategory = { ...category };
+    delete newCategory.links[linkId];
+
+    setCategory(newCategory);
+  };
+
   return (
     <div className={styles.category_container}>
       <ul className={styles.category_list}>
@@ -41,6 +48,7 @@ export default function Category({ globalEditMode, categoryData }: Props) {
               linkUrl={link.url}
               globalEditMode={globalEditMode}
               updateLink={updateLink}
+              deleteLink={deleteLink}
             ></Link>
           );
         })}

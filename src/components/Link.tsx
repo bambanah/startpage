@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 import * as styles from "../styles/links.module.scss";
 import classNames from "classnames";
 
@@ -9,6 +9,7 @@ interface LinkProps {
   linkTitle: string;
   linkUrl: string;
   updateLink: any;
+  deleteLink: any;
   globalEditMode: Boolean;
 }
 
@@ -17,9 +18,11 @@ export default function Link({
   linkTitle,
   linkUrl,
   updateLink,
+  deleteLink,
   globalEditMode,
 }: LinkProps) {
   let [linkEditMode, setLinkEditMode] = useState(false);
+  let [deletePrompt, setDeletePrompt] = useState(false);
   let [title, setTitle] = useState(linkTitle);
   let [url, setUrl] = useState(linkUrl);
 
@@ -57,14 +60,41 @@ export default function Link({
           [styles.linkEdit]: globalEditMode,
         })}
       >
-        <a href={url}>{title}</a>
-        {globalEditMode && (
-          <span
-            className={classNames(styles.linkEditButton)}
-            onClick={() => setLinkEditMode(!linkEditMode)}
-          >
-            <FontAwesomeIcon icon={faPen} /> Edit
-          </span>
+        {!deletePrompt && <a href={url}>{title}</a>}
+        {globalEditMode && !deletePrompt && (
+          <div className={styles.linkEditButtons}>
+            <span
+              className={classNames(styles.editButton)}
+              onClick={() => setLinkEditMode(!linkEditMode)}
+            >
+              <FontAwesomeIcon icon={faPen} />
+              Edit
+            </span>
+            <span
+              className={styles.deleteButton}
+              onClick={() => setDeletePrompt(true)}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </span>
+          </div>
+        )}
+        {deletePrompt && (
+          <div className={styles.deletePrompt}>
+            <span
+              className={styles.deleteButtonAccept}
+              onClick={() => deleteLink(linkId)}
+            >
+              <FontAwesomeIcon icon={faCheck} />
+            </span>
+            <span>Delete?</span>
+
+            <span
+              className={styles.deleteButtonDecline}
+              onClick={() => setDeletePrompt(false)}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </span>
+          </div>
         )}
       </li>
     );
