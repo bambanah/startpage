@@ -159,6 +159,32 @@
   }
 }
 
+.addCategoryButton {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+  margin: 1rem;
+  width: 30px;
+
+  color: #f8f8f2;
+  background-color: #44475a;
+
+  border: 2px solid #44475a;
+
+  cursor: pointer;
+
+  &:hover {
+    color: #50fa7b;
+    border: 2px solid #50fa7b;
+  }
+
+  svg {
+    flex: 1 1 auto;
+  }
+}
+
 .bottomButtons {
   position: absolute;
   bottom: 1rem;

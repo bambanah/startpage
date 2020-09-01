@@ -6,6 +6,8 @@ import Category from "../components/Category";
 import * as styles from "../styles/links.module.scss";
 import { Data } from "../utils/types";
 import { signOut, getCurrentUserId } from "../utils/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Startpage() {
   let initialData: Data = { categories: {} };
@@ -39,6 +41,11 @@ export default function Startpage() {
       });
   };
 
+  const addCategory = () => {
+    // TODO: Make it do the thing
+    console.log("Add category here.");
+  };
+
   return (
     <>
       <div className={styles.link_container}>
@@ -53,6 +60,16 @@ export default function Startpage() {
               ></Category>
             );
           })}
+        {globalEditMode && (
+          <div
+            className={styles.addCategoryButton}
+            onClick={() => {
+              addCategory();
+            }}
+          >
+            <FontAwesomeIcon icon={faPlus} />
+          </div>
+        )}
       </div>
       <div className={styles.bottomButtons}>
         {!globalEditMode && (

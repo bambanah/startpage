@@ -16,5 +16,6 @@ export const deletePrompt: string;
 export const deleteButtonAccept: string;
 export const deleteButtonDecline: string;
 export const addLinkButton: string;
+export const addCategoryButton: string;
 export const bottomButtons: string;
 export const logoutButton: string;
