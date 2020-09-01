@@ -6,7 +6,6 @@ import Category from "../components/Category";
 import * as styles from "../styles/links.module.scss";
 import { Data } from "../utils/types";
 import { signOut, getCurrentUserId } from "../utils/auth";
-import { updateLinks } from "../utils/links";
 
 export default function Startpage() {
   let initialData: Data = { categories: {} };
@@ -25,6 +24,21 @@ export default function Startpage() {
         setData(snapshot.val());
       });
   }, []);
+
+  const updateLinks = (links: Data) => {
+    const userId = getCurrentUserId();
+
+    firebase
+      .database()
+      .ref(`/users/${userId}`)
+      .once("value")
+      .then((snapshot) => {
+        if (JSON.stringify(links) != JSON.stringify(snapshot.val())) {
+          console.log("Firebase updated.");
+          firebase.database().ref(`/users/${userId}`).set(links);
+        }
+      });
+  };
 
   return (
     <>
