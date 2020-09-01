@@ -10,6 +10,7 @@ export const categoryTitle: string;
 export const link: string;
 export const linkEdit: string;
 export const linkEditButton: string;
+export const addLinkButton: string;
 export const bottomButtons: string;
 export const editButton: string;
 export const logoutButton: string;

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Link from "./Link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import * as styles from "../styles/links.module.scss";
 
@@ -43,6 +45,13 @@ export default function Category({ globalEditMode, categoryData }: Props) {
             ></Link>
           );
         })}
+        {globalEditMode && (
+          <li>
+            <a className={styles.addLinkButton}>
+              <FontAwesomeIcon icon={faPlus} />
+            </a>
+          </li>
+        )}
       </ul>
     </div>
   );
