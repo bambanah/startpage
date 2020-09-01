@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import firebase from "gatsby-plugin-firebase";
+import { v4 as uuidv4 } from "uuid";
 
 import Category from "../components/Category";
 
 import * as styles from "../styles/links.module.scss";
-import { Data } from "../utils/types";
+import { Data, Category as CategoryType } from "../utils/types";
 import { signOut, getCurrentUserId } from "../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +14,10 @@ export default function Startpage() {
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
   const [globalEditMode, setEdit] = useState(false);
+  const [addingCategory, setAddingCategory] = useState(false);
+
+  const [title, setTitle] = useState("");
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     const userId = getCurrentUserId();
@@ -41,9 +46,27 @@ export default function Startpage() {
       });
   };
 
-  const addCategory = () => {
-    // TODO: Make it do the thing
-    console.log("Add category here.");
+  const addCategory = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newCategory: CategoryType = {
+      title: title,
+      color: color,
+      links: {
+        [uuidv4()]: {
+          title: "Edit me!",
+          url: "https://example.com",
+        },
+      },
+    };
+    const uid = uuidv4();
+
+    let newData = { ...data };
+    newData.categories[uid] = newCategory;
+    setData(newData);
+    setAddingCategory(false);
+    setTitle("");
+    setColor("");
   };
 
   return (
@@ -53,21 +76,61 @@ export default function Startpage() {
           Object.entries(data.categories).map(([key, category]) => {
             return (
               <Category
-                key={category.color}
+                key={key}
                 id={key}
                 globalEditMode={globalEditMode}
                 categoryData={category}
               ></Category>
             );
           })}
-        {globalEditMode && (
+        {globalEditMode && !addingCategory && (
           <div
             className={styles.addCategoryButton}
             onClick={() => {
-              addCategory();
+              setAddingCategory(true);
             }}
           >
             <FontAwesomeIcon icon={faPlus} />
+          </div>
+        )}
+        {addingCategory && (
+          <div className={styles.addCategoryForm}>
+            <form onSubmit={addCategory}>
+              <label htmlFor="titleInput">Title</label>
+              <input
+                id="titleInput"
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.currentTarget.value);
+                }}
+              />
+
+              <label htmlFor="colorInput">Color</label>
+              <input
+                id="colorInput"
+                type="text"
+                placeholder="Color (HEX)"
+                value={color}
+                onChange={(e) => {
+                  setColor(e.currentTarget.value);
+                }}
+              />
+
+              <div className={styles.buttonRow}>
+                <input type="submit" value="Add" />
+                <button
+                  onClick={() => {
+                    setTitle("");
+                    setColor("");
+                    setAddingCategory(false);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
           </div>
         )}
       </div>

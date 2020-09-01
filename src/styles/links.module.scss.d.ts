@@ -17,5 +17,7 @@ export const deleteButtonAccept: string;
 export const deleteButtonDecline: string;
 export const addLinkButton: string;
 export const addCategoryButton: string;
+export const addCategoryForm: string;
+export const buttonRow: string;
 export const bottomButtons: string;
 export const logoutButton: string;

@@ -5,7 +5,6 @@ interface Link {
 export interface Category {
   title: string;
   color: string;
-  id: string;
   links: {
     [id: string]: Link;
   };

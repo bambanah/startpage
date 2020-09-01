@@ -184,6 +184,21 @@
     flex: 1 1 auto;
   }
 }
+.addCategoryForm {
+  font-family: "Fira Code", monospace;
+  color: #f8f8f2;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .buttonRow {
+    color: inherit;
+  }
+}
 
 .bottomButtons {
   position: absolute;
