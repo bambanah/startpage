@@ -70,6 +70,15 @@ export default function Startpage() {
     setData(newData);
   };
 
+  const deleteCategory = (categoryId: string) => {
+    let newData = { ...data };
+    if (newData.categories) {
+      delete newData.categories[categoryId];
+    }
+
+    setData(newData);
+  };
+
   return (
     <>
       <div className={styles.link_container}>
@@ -82,6 +91,7 @@ export default function Startpage() {
                 globalEditMode={globalEditMode}
                 categoryData={category}
                 updateCategory={updateCategory}
+                deleteCategory={deleteCategory}
               ></Category>
             );
           })}

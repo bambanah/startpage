@@ -1,13 +1,15 @@
 import React, { useState, FormEvent } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 import * as styles from "../styles/links.module.scss";
 import classNames from "classnames";
 
+import { Link as LinkType } from "../utils/types";
+import DeletePrompt from "./DeletePrompt";
+import EditHover from "./EditHover";
+import EditForm from "./EditForm";
+
 interface LinkProps {
   linkId: string;
-  linkTitle: string;
-  linkUrl: string;
+  linkData: LinkType;
   updateLink: any;
   deleteLink: any;
   globalEditMode: Boolean;
@@ -15,16 +17,15 @@ interface LinkProps {
 
 export default function Link({
   linkId,
-  linkTitle,
-  linkUrl,
+  linkData,
   updateLink,
   deleteLink,
   globalEditMode,
 }: LinkProps) {
   let [linkEditMode, setLinkEditMode] = useState(false);
   let [deletePrompt, setDeletePrompt] = useState(false);
-  let [title, setTitle] = useState(linkTitle);
-  let [url, setUrl] = useState(linkUrl);
+  let [title, setTitle] = useState(linkData.title);
+  let [url, setUrl] = useState(linkData.url);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,19 +39,14 @@ export default function Link({
   if (linkEditMode) {
     return (
       <li>
-        <form onSubmit={handleSubmit}>
-          <input
-            id={`${linkId}-title`}
-            value={title}
-            onChange={(e) => setTitle(e.currentTarget.value)}
-          />
-          <input
-            id={`${linkId}-url`}
-            value={url}
-            onChange={(e) => setUrl(e.currentTarget.value)}
-          />
-          <input type="submit" value="save" />
-        </form>
+        <EditForm
+          id={linkId}
+          submitHandler={handleSubmit}
+          values={[
+            { state: title, setState: setTitle },
+            { state: url, setState: setUrl },
+          ]}
+        />
       </li>
     );
   } else {
@@ -62,39 +58,17 @@ export default function Link({
       >
         {!deletePrompt && <a href={url}>{title}</a>}
         {globalEditMode && !deletePrompt && (
-          <div className={styles.linkEditButtons}>
-            <span
-              className={classNames(styles.editButton)}
-              onClick={() => setLinkEditMode(!linkEditMode)}
-            >
-              <FontAwesomeIcon icon={faPen} />
-              Edit
-            </span>
-            <span
-              className={styles.deleteButton}
-              onClick={() => setDeletePrompt(true)}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </span>
-          </div>
+          <EditHover
+            editFunction={setLinkEditMode}
+            deleteFunction={setDeletePrompt}
+          />
         )}
         {deletePrompt && (
-          <div className={styles.deletePrompt}>
-            <span
-              className={styles.deleteButtonAccept}
-              onClick={() => deleteLink(linkId)}
-            >
-              <FontAwesomeIcon icon={faCheck} />
-            </span>
-            <span>Delete?</span>
-
-            <span
-              className={styles.deleteButtonDecline}
-              onClick={() => setDeletePrompt(false)}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </span>
-          </div>
+          <DeletePrompt
+            id={linkId}
+            deleteFunction={deleteLink}
+            closeFunction={setDeletePrompt}
+          />
         )}
       </li>
     );
