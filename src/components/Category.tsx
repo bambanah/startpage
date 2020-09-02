@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "./Link";
 
 import * as styles from "../styles/links.module.scss";
@@ -8,50 +8,64 @@ import AddLink from "./AddLink";
 
 interface Props {
   categoryData: CategoryType;
-  id?: string;
+  categoryId: string;
   globalEditMode: Boolean;
+  updateCategory: any;
 }
 
-export default function Category({ globalEditMode, categoryData }: Props) {
-  const [category, setCategory] = useState(categoryData);
-
+export default function Category({
+  globalEditMode,
+  categoryId,
+  categoryData,
+  updateCategory,
+}: Props) {
   const updateLink = (
     linkId: string,
     newLink: { title: string; url: string }
   ) => {
-    let newCategory = { ...category };
-
-    newCategory.links[linkId] = newLink;
-
-    setCategory(newCategory);
+    let newCategory = { ...categoryData };
+    if (newCategory.links != undefined) {
+      newCategory.links[linkId] = newLink;
+    } else {
+      newCategory.links = {
+        [linkId]: newLink,
+      };
+    }
+    updateCategory(categoryId, newCategory);
   };
 
   const deleteLink = (linkId: string) => {
-    let newCategory = { ...category };
-    delete newCategory.links[linkId];
+    let newCategory = { ...categoryData };
+    if (newCategory.links) {
+      delete newCategory.links[linkId];
+    }
 
-    setCategory(newCategory);
+    updateCategory(categoryId, newCategory);
   };
 
   return (
     <div className={styles.category_container}>
       <ul className={styles.category_list}>
-        <li style={{ color: category.color }} className={styles.category_title}>
-          {category.title}
+        <li
+          style={{ color: categoryData.color }}
+          className={styles.category_title}
+        >
+          {categoryData.title}
         </li>
-        {Object.entries(category.links).map(([key, link]) => {
-          return (
-            <Link
-              key={key}
-              linkId={key}
-              linkTitle={link.title}
-              linkUrl={link.url}
-              globalEditMode={globalEditMode}
-              updateLink={updateLink}
-              deleteLink={deleteLink}
-            ></Link>
-          );
-        })}
+        {categoryData.links &&
+          Object.entries(categoryData.links).map(([key, link]) => {
+            return (
+              <Link
+                key={key}
+                linkId={key}
+                linkTitle={link.title}
+                linkUrl={link.url}
+                globalEditMode={globalEditMode}
+                updateLink={updateLink}
+                deleteLink={deleteLink}
+              ></Link>
+            );
+          })}
         {globalEditMode && <AddLink updateLink={updateLink} />}
       </ul>
     </div>

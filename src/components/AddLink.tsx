@@ -21,9 +21,6 @@ export default function AddLink({ updateLink }: Props) {
 
     const uid = uuidv4();
     const newLink = { title: title, url: url };
-    console.log("UID: ", uuidv4());
-    console.log("Title: ", title);
-    console.log("URL: ", url);
 
     updateLink(uid, newLink);
     setAddingLink(false);

@@ -52,12 +52,6 @@ export default function Startpage() {
     const newCategory: CategoryType = {
       title: title,
       color: color,
-      links: {
-        [uuidv4()]: {
-          title: "Edit me!",
-          url: "https://example.com",
-        },
-      },
     };
     const uid = uuidv4();
 
@@ -69,6 +63,13 @@ export default function Startpage() {
     setColor("");
   };
 
+  const updateCategory = (categoryId: string, newCategory: CategoryType) => {
+    let newData = { ...data };
+    newData.categories[categoryId] = newCategory;
+
+    setData(newData);
+  };
+
   return (
     <>
       <div className={styles.link_container}>
@@ -77,9 +78,10 @@ export default function Startpage() {
             return (
               <Category
                 key={key}
-                id={key}
+                categoryId={key}
                 globalEditMode={globalEditMode}
                 categoryData={category}
+                updateCategory={updateCategory}
               ></Category>
             );
           })}
