@@ -35,6 +35,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "styled-components": "^5.1.1",
     "uuid": "^8.3.0",
     "web-ext": "^5.0.0"
   },
