@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import "./layout.css";
+import { Container } from "./Styles";
 
 interface Props {
   children: ReactNode;
@@ -9,9 +9,9 @@ interface Props {
 const Layout = ({ children }: Props) => {
   return (
     <>
-      <div className="container">
+      <Container>
         <main>{children}</main>
-      </div>
+      </Container>
     </>
   );
 };

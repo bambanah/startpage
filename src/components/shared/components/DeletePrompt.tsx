@@ -1,7 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
-import * as styles from "../../../styles/links.module.scss";
+
+import { DeleteContainer, DeleteAccept, DeleteCancel } from "./Styles";
 
 interface Props {
   id: string;
@@ -15,21 +16,16 @@ export default function DeletePrompt({
   closeFunction,
 }: Props) {
   return (
-    <div className={styles.deletePrompt}>
-      <span
-        className={styles.deleteButtonAccept}
-        onClick={() => deleteFunction(id)}
-      >
+    <DeleteContainer>
+      <DeleteAccept onClick={() => deleteFunction(id)}>
         <FontAwesomeIcon icon={faCheck} />
-      </span>
+      </DeleteAccept>
+
       <span>Delete?</span>
 
-      <span
-        className={styles.deleteButtonDecline}
-        onClick={() => closeFunction(false)}
-      >
+      <DeleteCancel onClick={() => closeFunction(false)}>
         <FontAwesomeIcon icon={faTimes} />
-      </span>
-    </div>
+      </DeleteCancel>
+    </DeleteContainer>
   );
 }

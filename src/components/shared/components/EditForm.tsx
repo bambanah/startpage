@@ -1,5 +1,7 @@
 import React from "react";
 
+import { EditFormContainer, ButtonRow, FormInput } from "./Styles";
+
 interface Props {
   submitHandler: any;
   id: string;
@@ -7,22 +9,28 @@ interface Props {
 }
 
 export default function EditForm({ submitHandler, id, values }: Props) {
-  console.log(values[0].state);
   return (
-    <>
+    <EditFormContainer>
       <form onSubmit={submitHandler}>
         {values &&
           values.map((value) => {
             return (
-              <input
+              <FormInput
                 id={`${id}-${value}`}
                 value={value.state}
                 onChange={(e) => value.setState(e.currentTarget.value)}
               />
             );
           })}
-        <input type="submit" value="save" />
+        <ButtonRow>
+          <button className="saveButton" onClick={submitHandler}>
+            Save
+          </button>
+          <button className="cancelButton" onClick={() => {}}>
+            Cancel
+          </button>
+        </ButtonRow>
       </form>
-    </>
+    </EditFormContainer>
   );
 }

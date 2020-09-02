@@ -187,45 +187,6 @@
       }
     }
   }
-
-  .deletePrompt {
-    display: flex;
-
-    color: black;
-    background-color: #f8f8f2;
-    font-family: "Fira Code", monospace;
-
-    span {
-      text-align: center;
-      &:nth-of-type(2) {
-        flex: 1 1 80%;
-      }
-      &:not(:nth-of-type(2)) {
-        cursor: pointer;
-      }
-    }
-
-    .deleteButtonAccept {
-      flex: 1 0 2rem;
-      background-color: #50fa7b;
-
-      &:hover {
-        color: #50fa7b;
-        background-color: black;
-      }
-    }
-
-    .deleteButtonDecline {
-      flex: 1 0 2rem;
-
-      background-color: #ff5555;
-
-      &:hover {
-        color: #ff5555;
-        background-color: black;
-      }
-    }
-  }
 }
 
 .addLinkButton {

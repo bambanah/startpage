@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import * as styles from "../../../styles/links.module.scss";
+import { ButtonRow } from "../../shared/components/Styles";
 
 interface Props {
   updateLink: any;
@@ -24,6 +25,8 @@ export default function AddLink({ updateLink }: Props) {
 
     updateLink(uid, newLink);
     setAddingLink(false);
+    setTitle("");
+    setUrl("");
   };
 
   if (!addingLink) {
@@ -42,7 +45,7 @@ export default function AddLink({ updateLink }: Props) {
   } else {
     return (
       <li>
-        <form onSubmit={addLink}>
+        <form>
           <input
             type="text"
             placeholder="Title"
@@ -62,7 +65,20 @@ export default function AddLink({ updateLink }: Props) {
               setUrl(e.currentTarget.value);
             }}
           />
-          <input type="submit" value="Save" />
+          <ButtonRow>
+            <button className="saveButton" onClick={addLink}>
+              Save
+            </button>
+            <button
+              className="cancelButton"
+              onClick={(e) => {
+                e.preventDefault();
+                setAddingLink(false);
+              }}
+            >
+              Cancel
+            </button>
+          </ButtonRow>
         </form>
       </li>
     );
