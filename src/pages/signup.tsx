@@ -26,8 +26,9 @@ export default function Login() {
       <div className={styles.content}>
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
+            // TODO: Validate email
             className={styles.input}
-            type="text"
+            type="email"
             name="userEmail"
             value={email}
             placeholder="email"
@@ -35,6 +36,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.currentTarget.value)}
           />
           <input
+            // TODO: Validate password strength
             className={styles.input}
             type="password"
             name="userPassword"

@@ -53,6 +53,7 @@ export default function AddLink({ updateLink }: Props) {
             }}
           />
           <input
+            // TODO: Validate url
             type="text"
             placeholder="Url"
             value={url}

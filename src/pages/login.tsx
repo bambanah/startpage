@@ -20,8 +20,9 @@ export default function Login() {
       <div className={styles.content}>
         <form onSubmit={submitHandler} className={styles.form}>
           <input
+            // TODO: Validate email
             className={styles.input}
-            type="text"
+            type="email"
             name="userEmail"
             value={email}
             placeholder="email"

@@ -107,9 +107,11 @@ export default function Startpage() {
                 onChange={(e) => {
                   setTitle(e.currentTarget.value);
                 }}
+                required={true}
               />
 
               <label htmlFor="colorInput">Color</label>
+              {/* TODO: Validate input with this regex: ^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$ */}
               <input
                 id="colorInput"
                 type="text"
@@ -118,6 +120,7 @@ export default function Startpage() {
                 onChange={(e) => {
                   setColor(e.currentTarget.value);
                 }}
+                required={true}
               />
 
               <div className={styles.buttonRow}>
