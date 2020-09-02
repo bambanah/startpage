@@ -1,11 +1,11 @@
 import React, { useState, FormEvent } from "react";
-import * as styles from "../styles/links.module.scss";
+import * as styles from "../../../styles/links.module.scss";
 import classNames from "classnames";
 
-import { Link as LinkType } from "../utils/types";
-import DeletePrompt from "./DeletePrompt";
-import EditHover from "./EditHover";
-import EditForm from "./EditForm";
+import { Link as LinkType } from "../../../utils/types";
+import DeletePrompt from "../../shared/components/DeletePrompt";
+import EditHover from "../../shared/components/EditHover";
+import EditForm from "../../shared/components/EditForm";
 
 interface LinkProps {
   linkId: string;

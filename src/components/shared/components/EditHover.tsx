@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTimes } from "@fortawesome/free-solid-svg-icons";
-import * as styles from "../styles/links.module.scss";
+import * as styles from "../../../styles/links.module.scss";
 
 interface Props {
   editFunction: any;

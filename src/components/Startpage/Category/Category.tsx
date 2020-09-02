@@ -1,14 +1,14 @@
 import React, { useState, FormEvent } from "react";
-import Link from "./Link";
+import Link from "../Link/Link";
 import classNames from "classnames";
 
-import * as styles from "../styles/links.module.scss";
+import * as styles from "../../../styles/links.module.scss";
 
-import { Category as CategoryType } from "../utils/types";
+import { Category as CategoryType } from "../../../utils/types";
 import AddLink from "./AddLink";
-import DeletePrompt from "./DeletePrompt";
-import EditHover from "./EditHover";
-import EditForm from "./EditForm";
+import DeletePrompt from "../../shared/components/DeletePrompt";
+import EditHover from "../../shared/components/EditHover";
+import EditForm from "../../shared/components/EditForm";
 
 interface Props {
   categoryData: CategoryType;

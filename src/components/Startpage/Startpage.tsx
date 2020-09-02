@@ -2,11 +2,11 @@ import React, { useState, useEffect, FormEvent } from "react";
 import firebase from "gatsby-plugin-firebase";
 import { v4 as uuidv4 } from "uuid";
 
-import Category from "../components/Category";
+import Category from "./Category/Category";
 
-import * as styles from "../styles/links.module.scss";
-import { Data, Category as CategoryType } from "../utils/types";
-import { signOut, getCurrentUserId } from "../utils/auth";
+import * as styles from "../../styles/links.module.scss";
+import { Data, Category as CategoryType } from "../../utils/types";
+import { signOut, getCurrentUserId } from "../../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 

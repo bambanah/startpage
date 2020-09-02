@@ -1,6 +1,6 @@
 import React from "react";
 import { navigate } from "gatsby";
-import { isLoggedIn } from "../utils/auth";
+import { isLoggedIn } from "../../utils/auth";
 
 interface Props {
   component: any; // TODO: Figure out the actual type of an imported component

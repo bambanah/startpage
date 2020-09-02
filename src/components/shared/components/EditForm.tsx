@@ -21,16 +21,6 @@ export default function EditForm({ submitHandler, id, values }: Props) {
               />
             );
           })}
-        {/* <input
-          id={`${id}-title`}
-          value={title}
-          onChange={(e) => setTitle(e.currentTarget.value)}
-        />
-        <input
-          id={`${id}-url`}
-          value={url}
-          onChange={(e) => setUrl(e.currentTarget.value)}
-        /> */}
         <input type="submit" value="save" />
       </form>
     </>
