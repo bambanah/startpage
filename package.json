@@ -35,8 +35,8 @@
   },
   "scripts": {
     "addon-run": "web-ext run",
-    "addon-build": "web-ext build",
-    "build": "gatsby build",
+    "addon-build": "yarn build && web-ext build",
+    "build": "gatsby clean && gatsby build",
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "yarn develop",
