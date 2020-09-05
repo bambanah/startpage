@@ -6,7 +6,7 @@ Minimalistic startpage designed to be fully customisable. Currently only support
 
 ---
 
-### Motivation & Development
+### Motivation
 
 Startpages are traditionally created for purely personal use and written in simple HTML/CSS since links are very rarely updated. I wanted to actually LEARN something though, so I used a framework I hadn't used before: [Gatsby](https://www.gatsbyjs.com/).
 
