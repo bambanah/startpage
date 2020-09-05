@@ -1,0 +1,284 @@
+.title {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: bold;
+  color: #f8f8f2;
+}
+
+.link_container {
+  display: flex;
+}
+
+.category_container {
+  width: 160px;
+  padding: 1rem 1rem;
+  margin: 0 25px;
+}
+
+.category_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  font-size: 18px;
+}
+
+.category_title {
+  font-family: "Fira Code", monospace;
+  font-size: 1.2em;
+  font-weight: bold;
+
+  margin-bottom: 20px;
+}
+
+.link {
+  font-family: "Fira Code", monospace;
+  margin: 10px 0;
+
+  a {
+    color: #f8f8f2;
+    text-decoration: none;
+
+    transition-duration: 0.1s;
+
+    background-image: linear-gradient(120deg, #8be9fd 0%, #8bfdf7 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    background-position: 0 55%;
+
+    &:hover {
+      background-size: 100% 2px;
+    }
+  }
+}
+
+.linkEdit {
+  &:hover {
+    a {
+      display: none;
+    }
+    .linkEditButtons {
+      display: flex;
+    }
+  }
+
+  .deletePrompt {
+    display: flex;
+
+    color: black;
+    background-color: #f8f8f2;
+    font-family: "Fira Code", monospace;
+
+    span {
+      text-align: center;
+      &:nth-of-type(2) {
+        flex: 1 1 80%;
+      }
+      &:not(:nth-of-type(2)) {
+        cursor: pointer;
+      }
+    }
+
+    .deleteButtonAccept {
+      flex: 1 0 2rem;
+      background-color: #50fa7b;
+
+      &:hover {
+        color: #50fa7b;
+        background-color: black;
+      }
+    }
+
+    .deleteButtonDecline {
+      flex: 1 0 2rem;
+
+      background-color: #ff5555;
+
+      &:hover {
+        color: #ff5555;
+        background-color: black;
+      }
+    }
+  }
+}
+
+.linkEditButtons {
+  display: none;
+
+  .editButton {
+    flex: 1 1 80%;
+    padding-left: 2px;
+
+    font-family: "Fira Code", monospace;
+
+    cursor: pointer;
+
+    color: #000;
+    background-color: #f8f8f2;
+
+    svg {
+      margin-right: 0.2rem;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .deleteButton {
+    flex: 1 1 2rem;
+    text-align: center;
+
+    cursor: pointer;
+
+    background-color: #ff5555;
+    color: black;
+
+    &:hover {
+      color: #ff5555;
+      background-color: black;
+    }
+  }
+}
+
+.categoryEdit {
+  &:hover {
+    .categoryTitleSpan {
+      display: none;
+    }
+    .linkEditButtons {
+      display: flex;
+    }
+  }
+
+  .categoryEditButtons {
+    display: none;
+    font-weight: normal;
+
+    .editButton {
+      flex: 1 1 80%;
+      padding-left: 2px;
+
+      font-family: "Fira Code", monospace;
+
+      cursor: pointer;
+
+      color: #000;
+      background-color: #f8f8f2;
+
+      svg {
+        margin-right: 0.2rem;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .deleteButton {
+      flex: 1 1 2rem;
+      text-align: center;
+
+      cursor: pointer;
+
+      background-color: #ff5555;
+      color: black;
+
+      &:hover {
+        color: #ff5555;
+        background-color: black;
+      }
+    }
+  }
+}
+
+.addLinkButton {
+  background-color: #44475a;
+  color: #f8f8f2;
+  padding: 0.2rem 0;
+  box-sizing: border-box;
+  font-family: "Fira Code", monospace;
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  border: 2px solid #44475a;
+
+  transition-duration: 0.2s;
+
+  &:hover {
+    color: #50fa7b;
+    border: 2px solid #50fa7b;
+  }
+}
+
+.addCategoryButton {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+  margin: 1rem;
+  width: 30px;
+
+  color: #f8f8f2;
+  background-color: #44475a;
+
+  border: 2px solid #44475a;
+
+  cursor: pointer;
+
+  &:hover {
+    color: #50fa7b;
+    border: 2px solid #50fa7b;
+  }
+
+  svg {
+    flex: 1 1 auto;
+  }
+}
+.addCategoryForm {
+  font-family: "Fira Code", monospace;
+  color: #f8f8f2;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .buttonRow {
+    color: inherit;
+  }
+}
+
+.bottomButtons {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+
+  a {
+    box-sizing: border-box;
+    position: relative;
+    left: -50%;
+    cursor: pointer;
+    margin: 0 0.8rem;
+
+    font-family: "Fira Code", monospace;
+    color: #f8f8f2;
+    font-size: 14px;
+    padding: 0.1rem 0.3rem;
+
+    transition-duration: 0.1s;
+
+    &.editButton {
+      &:hover {
+        color: #43d4ee;
+      }
+    }
+
+    &.logoutButton {
+      &:hover {
+        color: #ff5555;
+      }
+    }
+  }
+}
