@@ -18,7 +18,7 @@ export default function EditForm({ submitHandler, id, values }: Props) {
               <FormInput
                 id={`${id}-${value}`}
                 value={value.state}
-                onChange={(e) => value.setState(e.currentTarget.value)}
+                onChange={(e: any) => value.setState(e.currentTarget.value)}
               />
             );
           })}

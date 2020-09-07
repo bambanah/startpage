@@ -1,7 +1,7 @@
 module.exports = {
   // verbose: true,
   filename: "startpage.zip",
-  artifactsDir: "addon",
+  artifactsDir: "dist/extension",
 
   build: {
     overwriteDest: true,
