@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTimes } from "@fortawesome/free-solid-svg-icons";
-import * as styles from "../../../styles/links.module.scss";
+import {LinkEditButtons, EditButton,   DeleteButton} from "./Styles"
 
 interface Props {
   editFunction: any;
@@ -10,17 +10,15 @@ interface Props {
 
 export default function EditHover({ editFunction, deleteFunction }: Props) {
   return (
-    <div className={styles.linkEditButtons}>
-      <span className={styles.editButton} onClick={() => editFunction(true)}>
+    <LinkEditButtons>
+      <EditButton onClick={() => editFunction(true)}>
         <FontAwesomeIcon icon={faPen} />
         Edit
-      </span>
-      <span
-        className={styles.deleteButton}
-        onClick={() => deleteFunction(true)}
+      </EditButton>
+      <DeleteButton        onClick={() => deleteFunction(true)}
       >
         <FontAwesomeIcon icon={faTimes} />
-      </span>
-    </div>
+      </DeleteButton>
+    </LinkEditButtons>
   );
 }

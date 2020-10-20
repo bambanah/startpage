@@ -104,3 +104,41 @@ export const ButtonRow = styled.div`
     }
   }
 `;
+
+export const LinkEditButtons = styled.div`
+  display: none;
+`
+
+export const EditButton = styled.span`
+  flex: 1 1 80%;
+  padding-left: 2px;
+
+  font-family: "Fira Code", monospace;
+
+  cursor: pointer;
+
+  color: #000;
+  background-color: #f8f8f2;
+
+  svg {
+    margin-right: 0.2rem;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+export const DeleteButton = styled.span`
+  flex: 1 1 2rem;
+  text-align: center;
+
+  cursor: pointer;
+
+  background-color: #ff5555;
+  color: black;
+
+  &:hover {
+    color: #ff5555;
+    background-color: black;
+  }
+`
