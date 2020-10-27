@@ -1,18 +1,22 @@
 import React, { useState, FormEvent } from "react";
-import { Link } from "gatsby";
+import Link from "next/link";
 
 import * as styles from "../styles/auth.module.scss";
 
 import { signIn } from "../utils/auth";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
 
-    signIn(email, password);
+    signIn(email, password).then(() => {
+      router.push("/");
+    });
   };
 
   return (
@@ -40,8 +44,8 @@ export default function Login() {
           />
           <input className={styles.submitButton} type="submit" value="login" />
         </form>
-        <Link className={styles.link} to="/signup">
-          sign up
+        <Link href="/signup">
+          <a className={styles.link}>sign up</a>
         </Link>
       </div>
     </div>

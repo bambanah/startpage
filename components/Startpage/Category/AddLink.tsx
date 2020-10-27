@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import * as styles from "../../../styles/links.module.scss";
-import { ButtonRow } from "../../shared/components/Styles";
+import { ButtonRow } from "../../shared/Styles";
 
 interface Props {
   updateLink: any;

@@ -1,5 +1,5 @@
 import React from "react";
-import { navigate } from "gatsby";
+import { navigate } from "@reach/router";
 import { isLoggedIn } from "../../utils/auth";
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 }
 
 const PrivateRoute = ({ component: Component, location, ...rest }: Props) => {
+  console.log(isLoggedIn());
   if (
     !isLoggedIn() &&
     location !== undefined &&

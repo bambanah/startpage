@@ -1,6 +1,8 @@
 import React, { useState, useEffect, FormEvent } from "react";
-import firebase from "gatsby-plugin-firebase";
+import { db } from "../../config/firebase"; // FIXME:
 import { v4 as uuidv4 } from "uuid";
+
+import { useAuth } from "../../hooks/useAuth";
 
 import Category from "./Category/Category";
 
@@ -11,6 +13,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Startpage() {
+  const auth = useAuth();
+  if (!auth.user) return null;
+
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
   const [globalEditMode, setEdit] = useState(false);
@@ -22,11 +27,10 @@ export default function Startpage() {
   useEffect(() => {
     const userId = getCurrentUserId();
 
-    firebase
-      .database()
-      .ref(`/users/${userId}`)
+    db.ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
+        console.log(snapshot.val());
         setData(snapshot.val());
       });
   }, []);
@@ -34,14 +38,12 @@ export default function Startpage() {
   const updateLinks = (links: Data) => {
     const userId = getCurrentUserId();
 
-    firebase
-      .database()
-      .ref(`/users/${userId}`)
+    db.ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
         if (JSON.stringify(links) != JSON.stringify(snapshot.val())) {
           console.log("Firebase updated.");
-          firebase.database().ref(`/users/${userId}`).set(links);
+          db.ref(`/users/${userId}`).set(links);
         }
       });
   };

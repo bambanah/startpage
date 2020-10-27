@@ -1,7 +1,7 @@
-import firebase from "gatsby-plugin-firebase";
+import { db } from "../config/firebase";
 
 export const assignDefaultLinks = (userId: string) => {
   const defaultLinks = require("./default-links.json");
 
-  firebase.database().ref(`/users/${userId}`).set(defaultLinks);
+  db.ref(`/users/${userId}`).set(defaultLinks);
 };
