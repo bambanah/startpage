@@ -77,7 +77,7 @@
     "components/Startpage/Category",
     "components/components",
     "components/App",
-    "pages/404.tsx"
+    "pages/404.tsx", "components/context/StateContext.tsx"
   ],
   "exclude": [
     "node_modules"

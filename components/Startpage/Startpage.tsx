@@ -1,8 +1,8 @@
 import React, { useState, useEffect, FormEvent } from "react";
-import { db } from "../../config/firebase"; // FIXME:
+import { database } from "../../config/firebase";
 import { v4 as uuidv4 } from "uuid";
 
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../context/AuthContext";
 
 import Category from "./Category/Category";
 
@@ -27,7 +27,8 @@ export default function Startpage() {
   useEffect(() => {
     const userId = getCurrentUserId();
 
-    db.ref(`/users/${userId}`)
+    database
+      .ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
         console.log(snapshot.val());
@@ -38,12 +39,13 @@ export default function Startpage() {
   const updateLinks = (links: Data) => {
     const userId = getCurrentUserId();
 
-    db.ref(`/users/${userId}`)
+    database
+      .ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
         if (JSON.stringify(links) != JSON.stringify(snapshot.val())) {
           console.log("Firebase updated.");
-          db.ref(`/users/${userId}`).set(links);
+          database.ref(`/users/${userId}`).set(links);
         }
       });
   };

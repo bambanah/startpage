@@ -1,7 +1,7 @@
-import { db } from "../config/firebase";
+import { database } from "../config/firebase";
 
 export const assignDefaultLinks = (userId: string) => {
-  const defaultLinks = require("./default-links.json");
+  const defaultLinks = require("../config/default-links.json");
 
-  db.ref(`/users/${userId}`).set(defaultLinks);
+  database.ref(`/users/${userId}`).set(defaultLinks);
 };

@@ -10,14 +10,16 @@ export const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
+// If no firebase app is initialised, initialise the app
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-const app = firebase.app();
+// const app = firebase.app();
+const database = firebase.database();
 const auth = firebase.auth();
-const db = firebase.database();
-export { auth, db };
-console.log(app.name ? "Firebase Mode Activated!" : "Firebase not working :(");
+
+export { firebase, auth, database };
