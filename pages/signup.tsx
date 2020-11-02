@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import { Link } from "gatsby";
+import Link from "next/link";
 
 import * as styles from "../styles/auth.module.scss";
 
@@ -60,8 +60,8 @@ export default function Login() {
             value="sign up"
           />
         </form>
-        <Link className={styles.link} to="/login">
-          login
+        <Link href="/login">
+          <a className={styles.link}>login</a>
         </Link>
         {error}
       </div>

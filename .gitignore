@@ -3,3 +3,7 @@ addon/
 .cache/
 
 public/
+
+.next/
+
+yarn-error.log

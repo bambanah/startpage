@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from "react";
-import firebase from "gatsby-plugin-firebase";
+import { database } from "../../config/firebase";
 import { v4 as uuidv4 } from "uuid";
 
 import Category from "./Category/Category";
@@ -10,7 +10,9 @@ import { signOut, getCurrentUserId } from "../../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-export default function Startpage() {
+import withPrivateRoute from "../../hooks/withPrivateRoute";
+
+function Startpage() {
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
   const [globalEditMode, setEdit] = useState(false);
@@ -22,8 +24,7 @@ export default function Startpage() {
   useEffect(() => {
     const userId = getCurrentUserId();
 
-    firebase
-      .database()
+    database
       .ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
@@ -34,14 +35,13 @@ export default function Startpage() {
   const updateLinks = (links: Data) => {
     const userId = getCurrentUserId();
 
-    firebase
-      .database()
+    database
       .ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
         if (JSON.stringify(links) != JSON.stringify(snapshot.val())) {
           console.log("Firebase updated.");
-          firebase.database().ref(`/users/${userId}`).set(links);
+          database.ref(`/users/${userId}`).set(links);
         }
       });
   };
@@ -174,3 +174,5 @@ export default function Startpage() {
     </>
   );
 }
+
+export default withPrivateRoute(Startpage);

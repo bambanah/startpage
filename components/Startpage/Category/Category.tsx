@@ -6,9 +6,9 @@ import * as styles from "../../../styles/links.module.scss";
 
 import { Category as CategoryType } from "../../../utils/types";
 import AddLink from "./AddLink";
-import DeletePrompt from "../../shared/components/DeletePrompt";
-import EditHover from "../../shared/components/EditHover";
-import EditForm from "../../shared/components/EditForm";
+import DeletePrompt from "../../shared/DeletePrompt";
+import EditHover from "../../shared/EditHover";
+import EditForm from "../../shared/EditForm";
 
 interface Props {
   categoryData: CategoryType;
