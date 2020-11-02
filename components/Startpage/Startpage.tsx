@@ -2,8 +2,6 @@ import React, { useState, useEffect, FormEvent } from "react";
 import { database } from "../../config/firebase";
 import { v4 as uuidv4 } from "uuid";
 
-import { useAuth } from "../context/AuthContext";
-
 import Category from "./Category/Category";
 
 import * as styles from "../../styles/links.module.scss";
@@ -15,8 +13,6 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import withPrivateRoute from "../../hooks/withPrivateRoute";
 
 function Startpage() {
-  // const { user, authenticated } = useAuth();
-
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
   const [globalEditMode, setEdit] = useState(false);
@@ -27,12 +23,11 @@ function Startpage() {
 
   useEffect(() => {
     const userId = getCurrentUserId();
-    console.log("got here");
+
     database
       .ref(`/users/${userId}`)
       .once("value")
       .then((snapshot) => {
-        console.log(snapshot.val());
         setData(snapshot.val());
       });
   }, []);
