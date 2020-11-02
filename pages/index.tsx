@@ -10,9 +10,7 @@ import Startpage from "../components/Startpage/Startpage";
 const IndexPage = () => {
   return (
     <Layout>
-      <Router>
-        <PrivateRoute path="/" component={Startpage}></PrivateRoute>
-      </Router>
+      <Startpage />
     </Layout>
   );
 };

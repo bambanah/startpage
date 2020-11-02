@@ -12,9 +12,10 @@ import { signOut, getCurrentUserId } from "../../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-export default function Startpage() {
-  const auth = useAuth();
-  if (!auth.user) return null;
+import withPrivateRoute from "../../hooks/withPrivateRoute";
+
+function Startpage() {
+  // const { user, authenticated } = useAuth();
 
   let initialData: Data = { categories: {} };
   const [data, setData] = useState(initialData);
@@ -26,7 +27,7 @@ export default function Startpage() {
 
   useEffect(() => {
     const userId = getCurrentUserId();
-
+    console.log("got here");
     database
       .ref(`/users/${userId}`)
       .once("value")
@@ -178,3 +179,5 @@ export default function Startpage() {
     </>
   );
 }
+
+export default withPrivateRoute(Startpage);
