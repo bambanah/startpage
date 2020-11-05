@@ -2,6 +2,8 @@ import React, { useState, useEffect, FormEvent } from "react";
 import { database } from "../../config/firebase";
 import { v4 as uuidv4 } from "uuid";
 
+import Head from "next/head";
+
 import Category from "./Category/Category";
 
 import * as styles from "../../styles/links.module.scss";
@@ -9,8 +11,6 @@ import { Data, Category as CategoryType } from "../../utils/types";
 import { signOut, getCurrentUserId } from "../../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
-import withPrivateRoute from "../../hooks/withPrivateRoute";
 
 function Startpage() {
   let initialData: Data = { categories: {} };
@@ -81,6 +81,9 @@ function Startpage() {
 
   return (
     <>
+      <Head>
+        <title>Startpage</title>
+      </Head>
       <div className={styles.link_container}>
         {data &&
           Object.entries(data.categories).map(([key, category]) => {
@@ -175,4 +178,4 @@ function Startpage() {
   );
 }
 
-export default withPrivateRoute(Startpage);
+export default Startpage;
